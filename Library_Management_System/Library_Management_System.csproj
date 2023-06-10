@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2369E4FA-5A67-4F19-89E3-92BE764BF9F0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Library_Management_System</RootNamespace>
+    <AssemblyName>Library_Management_System</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.32.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Project C#\mysql_C#\mysql.data\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addBorrowings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addBorrowings.Designer.cs">
+      <DependentUpon>addBorrowings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addEBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addEBook.Designer.cs">
+      <DependentUpon>addEBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addEvent.Designer.cs">
+      <DependentUpon>addEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addLibrarians.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addLibrarians.Designer.cs">
+      <DependentUpon>addLibrarians.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addMember.Designer.cs">
+      <DependentUpon>addMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addPhysicalBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addPhysicalBook.Designer.cs">
+      <DependentUpon>addPhysicalBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addVirtualGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addVirtualGroup.Designer.cs">
+      <DependentUpon>addVirtualGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adminDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminDashBoard.Designer.cs">
+      <DependentUpon>adminDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="borrowedDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="borrowedDetails.Designer.cs">
+      <DependentUpon>borrowedDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="eBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eBooks.Designer.cs">
+      <DependentUpon>eBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="events.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="events.Designer.cs">
+      <DependentUpon>events.cs</DependentUpon>
+    </Compile>
+    <Compile Include="librarianDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="librarianDashBoard.Designer.cs">
+      <DependentUpon>librarianDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="librarianDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="librarianDesktop.Designer.cs">
+      <DependentUpon>librarianDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adminDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminDesktop.Designer.cs">
+      <DependentUpon>adminDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="manageMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manageMembers.Designer.cs">
+      <DependentUpon>manageMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="manageUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manageUsers.Designer.cs">
+      <DependentUpon>manageUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="physicalBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="physicalBooks.Designer.cs">
+      <DependentUpon>physicalBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="updateBorrowings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateBorrowings.Designer.cs">
+      <DependentUpon>updateBorrowings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateEbooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateEbooks.Designer.cs">
+      <DependentUpon>updateEbooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateEvents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateEvents.Designer.cs">
+      <DependentUpon>updateEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateLibrarians.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateLibrarians.Designer.cs">
+      <DependentUpon>updateLibrarians.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateMembers.Designer.cs">
+      <DependentUpon>updateMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updatePhysicalBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updatePhysicalBooks.Designer.cs">
+      <DependentUpon>updatePhysicalBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateVirtualGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateVirtualGroups.Designer.cs">
+      <DependentUpon>updateVirtualGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="virtualGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="virtualGroups.Designer.cs">
+      <DependentUpon>virtualGroups.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="addBorrowings.resx">
+      <DependentUpon>addBorrowings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addEBook.resx">
+      <DependentUpon>addEBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addEvent.resx">
+      <DependentUpon>addEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addLibrarians.resx">
+      <DependentUpon>addLibrarians.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addMember.resx">
+      <DependentUpon>addMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addPhysicalBook.resx">
+      <DependentUpon>addPhysicalBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addVirtualGroup.resx">
+      <DependentUpon>addVirtualGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminDashBoard.resx">
+      <DependentUpon>adminDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminDesktop.resx">
+      <DependentUpon>adminDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="borrowedDetails.resx">
+      <DependentUpon>borrowedDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eBooks.resx">
+      <DependentUpon>eBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="events.resx">
+      <DependentUpon>events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="librarianDashBoard.resx">
+      <DependentUpon>librarianDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="librarianDesktop.resx">
+      <DependentUpon>librarianDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manageMembers.resx">
+      <DependentUpon>manageMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manageUsers.resx">
+      <DependentUpon>manageUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="physicalBooks.resx">
+      <DependentUpon>physicalBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="updateBorrowings.resx">
+      <DependentUpon>updateBorrowings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateEbooks.resx">
+      <DependentUpon>updateEbooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateEvents.resx">
+      <DependentUpon>updateEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateLibrarians.resx">
+      <DependentUpon>updateLibrarians.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateMembers.resx">
+      <DependentUpon>updateMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updatePhysicalBooks.resx">
+      <DependentUpon>updatePhysicalBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateVirtualGroups.resx">
+      <DependentUpon>updateVirtualGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="virtualGroups.resx">
+      <DependentUpon>virtualGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\969265_cogwheels_seo_setting_configuration_gear_icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5402435_account_profile_user_avatar_man_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2538749_key_open_password_security_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\326724_hidden_off_visibility_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10239767_hide_close eye_eye_hidden_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nsbm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7295021_photos_photography_camera_photo_picture_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\314793_upload_folder_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\314793_upload_folder_icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5172576_camera_image_picture_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\314499_cloud_upload_icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
