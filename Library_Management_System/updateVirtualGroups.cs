@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ namespace Library_Management_System
 {
     public partial class updateVirtualGroups : Form
     {
-        private string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         int groupId = 0;
         public updateVirtualGroups(int groupId)
         {
@@ -41,15 +41,15 @@ namespace Library_Management_System
             byte[] imageData = null;
             string url = "";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             string query = "SELECT name,description,url,image,dateTime FROM virtualGroups WHERE groupId=@groupId";
             try
             {
                 connection.Open();
-                MySqlCommand getCommand = new MySqlCommand(query, connection);
+                SqlCommand getCommand = new SqlCommand(query, connection);
                 getCommand.Parameters.AddWithValue("@groupId", groupId);
 
-                MySqlDataReader reader = null;
+                SqlDataReader reader = null;
                 try
                 {
                     reader = getCommand.ExecuteReader();
@@ -128,12 +128,12 @@ namespace Library_Management_System
             byte[] imageData = ms.ToArray();
 
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             string query = "UPDATE virtualgroups SET description=@description,url=@url,image=@image WHERE groupId=@groupId";
             try
             {
                 connection.Open();
-                MySqlCommand updateCommand = new MySqlCommand(query, connection);
+                SqlCommand updateCommand = new SqlCommand(query, connection);
                 
                 updateCommand.Parameters.AddWithValue("@image", imageData);
                 updateCommand.Parameters.AddWithValue("@description",descriptionTextBox.Text);

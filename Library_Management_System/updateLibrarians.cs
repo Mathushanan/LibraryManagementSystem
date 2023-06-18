@@ -1,5 +1,5 @@
 ﻿using Microsoft.SqlServer.Server;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace Library_Management_System
 {
     public partial class updateLibrarians : Form
     {
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public updateLibrarians(string id, string name, string email, string password, string userType)
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace Library_Management_System
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
 
 
@@ -55,7 +55,7 @@ namespace Library_Management_System
                 string email = emailTextBox.Text;
                 string password = passwordTextBox.Text;
                 
-                MySqlCommand updateCommand = new MySqlCommand("UPDATE users SET name=@name, email=@email, password=@password WHERE userId=@id", connection);
+                SqlCommand updateCommand = new SqlCommand("UPDATE users SET name=@name, email=@email, password=@password WHERE userId=@id", connection);
 
                 updateCommand.Parameters.AddWithValue("id", userId);
                 updateCommand.Parameters.AddWithValue("name", name);

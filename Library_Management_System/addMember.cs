@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,9 +49,9 @@ namespace Library_Management_System
 
         private void addMembersButton_Click(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             
             
             if (string.IsNullOrWhiteSpace(idTextBox.Text) || string.IsNullOrWhiteSpace(nameTextBox.Text) || string.IsNullOrWhiteSpace(emailTextBox.Text) || string.IsNullOrWhiteSpace(passwordTextBox.Text) || string.IsNullOrWhiteSpace(confirmTextBox.Text))
@@ -79,7 +79,7 @@ namespace Library_Management_System
 
                     connection.Open();
                     string query1 = "Select COUNT(*) FROM users WHERE email=@email";
-                    MySqlCommand checkCommand = new MySqlCommand(query1, connection);
+                    SqlCommand checkCommand = new SqlCommand(query1, connection);
                     checkCommand.Parameters.AddWithValue("@email", email);
                     int count = Convert.ToInt32(checkCommand.ExecuteScalar());
 
@@ -87,7 +87,7 @@ namespace Library_Management_System
                     {
 
                         string query2 = "INSERT INTO users (userId,name,email,password,userType) VALUES (@id,@name,@email,@password,@userType)";
-                        MySqlCommand cmd = new MySqlCommand(query2, connection);
+                        SqlCommand cmd = new SqlCommand(query2, connection);
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.Parameters.AddWithValue("@name", name);
                         cmd.Parameters.AddWithValue("@email", email);

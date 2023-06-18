@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
 
 namespace Library_Management_System
 {
     public partial class librarianDashBoard : Form
     {
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public librarianDashBoard()
         {
             InitializeComponent();
@@ -33,13 +32,13 @@ namespace Library_Management_System
 
         private int getBooksBorrowed()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             int count = 0;
             try
             {
                 connection.Open();
                 string query = "SELECT COUNT(*) FROM borrowings";
-                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                SqlCommand checkCommand = new SqlCommand(query, connection);
                 count = Convert.ToInt32(checkCommand.ExecuteScalar());
             }
             catch (Exception ex)
@@ -55,14 +54,14 @@ namespace Library_Management_System
         }
         private int getTotalMembers()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             int count = 0;
             string type = "student";
             try
             {
                 connection.Open();
                 string query = "SELECT COUNT(*) FROM users WHERE userType=@type";
-                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                SqlCommand checkCommand = new SqlCommand(query, connection);
                 checkCommand.Parameters.AddWithValue("@type", type);
                 count = Convert.ToInt32(checkCommand.ExecuteScalar());
             }
@@ -79,13 +78,13 @@ namespace Library_Management_System
         }
         private int getTotlalPhysicalBooks()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             int count = 0;
             try
             {
                 connection.Open();
                 string query = "SELECT COUNT(*) FROM physicalbooks";
-                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                SqlCommand checkCommand = new SqlCommand(query, connection);
                 count = Convert.ToInt32(checkCommand.ExecuteScalar());
             }
             catch (Exception ex)
@@ -101,13 +100,13 @@ namespace Library_Management_System
         }
         private int getTotalEBooks()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             int count = 0;
             try
             {
                 connection.Open();
                 string query = "SELECT COUNT(*) FROM ebooks";
-                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                SqlCommand checkCommand = new SqlCommand(query, connection);
                 count = Convert.ToInt32(checkCommand.ExecuteScalar());
             }
             catch (Exception ex)
@@ -123,13 +122,13 @@ namespace Library_Management_System
         }
         private int getActiveEvents()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             int count = 0;
             try
             {
                 connection.Open();
                 string query = "SELECT COUNT(*) FROM events";
-                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                SqlCommand checkCommand = new SqlCommand(query, connection);
                 count = Convert.ToInt32(checkCommand.ExecuteScalar());
             }
             catch (Exception ex)
@@ -145,13 +144,13 @@ namespace Library_Management_System
         }
         private int getVirtualGroups()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             int count = 0;
             try
             {
                 connection.Open();
                 string query = "SELECT COUNT(*) FROM virtualgroups";
-                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                SqlCommand checkCommand = new SqlCommand(query, connection);
                 count = Convert.ToInt32(checkCommand.ExecuteScalar());
             }
             catch (Exception ex)

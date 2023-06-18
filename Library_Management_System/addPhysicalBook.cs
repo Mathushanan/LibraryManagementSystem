@@ -1,9 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -20,7 +19,7 @@ namespace Library_Management_System
     public partial class addPhysicalBook : Form
     {
         private Image defaultImage;
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public addPhysicalBook()
         {
             InitializeComponent();
@@ -106,10 +105,10 @@ namespace Library_Management_System
                 try
                 {
                     int count= 0;
-                    MySqlConnection connection = new MySqlConnection(connectionString);
+                    SqlConnection connection = new SqlConnection(connectionString);
                     connection.Open();
                     string query1 = "SELECT COUNT(*) FROM physicalbooks WHERE isbn=@isbn ";
-                    MySqlCommand checkCommand = new MySqlCommand(query1, connection);
+                    SqlCommand checkCommand = new SqlCommand(query1, connection);
                     try
                     {
                         checkCommand.Parameters.AddWithValue("@isbn", isbn);
@@ -145,7 +144,7 @@ namespace Library_Management_System
                             
                             connection.Open();
                             string query2 = "INSERT INTO physicalbooks (title,image,author,isbn,publicationYear,category) VALUES (@title,@ImageData,@author,@isbn,@year,@category)";
-                            MySqlCommand command = new MySqlCommand(query2, connection);
+                            SqlCommand command = new SqlCommand(query2, connection);
                             try
                             {
                                 command.Parameters.AddWithValue("@ImageData", imageData);

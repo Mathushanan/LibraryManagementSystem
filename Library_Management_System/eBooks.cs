@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ namespace Library_Management_System
 {
     public partial class eBooks : Form
     {
-        private string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public eBooks()
         {
             InitializeComponent();
@@ -36,12 +36,12 @@ namespace Library_Management_System
         private void LoadBookData()
         {
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM ebooks", connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlCommand command = new SqlCommand("SELECT * FROM ebooks", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
@@ -73,12 +73,12 @@ namespace Library_Management_System
         private int getRating(int bookId)
         {
             int rating = 0;
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
                 string query = "SELECT rating FROM ebooks_ratings WHERE bookId=@bookId";
-                MySqlCommand ratingCommand = new MySqlCommand(query, connection);
+                SqlCommand ratingCommand = new SqlCommand(query, connection);
                 ratingCommand.Parameters.AddWithValue("@bookId", bookId);
                 object result = ratingCommand.ExecuteScalar();
 
@@ -306,13 +306,13 @@ namespace Library_Management_System
             DialogResult result = MessageBox.Show("Are you sure you want to delete this entry?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                MySqlConnection connection = new MySqlConnection(connectionString);
+                SqlConnection connection = new SqlConnection(connectionString);
 
                 try
                 {
                     connection.Open();
                     string query = "DELETE FROM ebooks WHERE isbn = @isbn";
-                    MySqlCommand deleteCommand = new MySqlCommand(query, connection);
+                    SqlCommand deleteCommand = new SqlCommand(query, connection);
                     deleteCommand.Parameters.AddWithValue("@isbn", isbn);
 
                     int rowsAffected = deleteCommand.ExecuteNonQuery();
@@ -372,13 +372,13 @@ namespace Library_Management_System
                 return;
             }
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM ebooks WHERE title LIKE @searchKey OR isbn LIKE @searchKey OR author LIKE @searchKey OR category LIKE @searchKey OR publicationYear LIKE @searchKey", connection);
+                SqlCommand command = new SqlCommand("SELECT * FROM ebooks WHERE title LIKE @searchKey OR isbn LIKE @searchKey OR author LIKE @searchKey OR category LIKE @searchKey OR publicationYear LIKE @searchKey", connection);
                 command.Parameters.AddWithValue("@searchKey", "%" + searchKey + "%");
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 

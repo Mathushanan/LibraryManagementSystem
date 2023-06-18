@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ namespace Library_Management_System
     public partial class updateEvents : Form
     {
         private int eventId = 0;
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public updateEvents(int eventId)
         {
             this.eventId = eventId;
@@ -48,15 +48,15 @@ namespace Library_Management_System
             string dateTime="";
             byte[] imageData = null;
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             string query = "SELECT title,image,description,location,date FROM events WHERE eventId=@eventId";
             try
             {
                 connection.Open();
-                MySqlCommand getCommand = new MySqlCommand(query, connection);
+                SqlCommand getCommand = new SqlCommand(query, connection);
                 getCommand.Parameters.AddWithValue("@eventId", eventId);
 
-                MySqlDataReader reader = null;
+                SqlDataReader reader = null;
                 try
                 {
                     reader = getCommand.ExecuteReader();
@@ -119,11 +119,11 @@ namespace Library_Management_System
             eventImage.Image.Save(ms, eventImage.Image.RawFormat);
             byte[] imageData = ms.ToArray();
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                MySqlCommand updateCommand = new MySqlCommand("UPDATE events SET title=@title,image=@image,description=@description,location=@location,date=@dateTime WHERE eventId=@eventId",connection);
+                SqlCommand updateCommand = new SqlCommand("UPDATE events SET title=@title,image=@image,description=@description,location=@location,date=@dateTime WHERE eventId=@eventId",connection);
                 updateCommand.Parameters.AddWithValue("@title", titleTextBox.Text);
                 updateCommand.Parameters.AddWithValue("@image", imageData);
                 updateCommand.Parameters.AddWithValue("@description", descriptionTextBox.Text);

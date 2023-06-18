@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ namespace Library_Management_System
 {
     public partial class addBorrowings : Form
     {
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public addBorrowings()
         {
             InitializeComponent();
@@ -39,24 +39,24 @@ namespace Library_Management_System
             }
             else
             {
-                MySqlConnection connection = new MySqlConnection(connectionString);
+                SqlConnection connection = new SqlConnection(connectionString);
                 string name = null;
                 
                 try
                 {
                     
-                    string query1 = "SELECT name FROM users WHERE userId=@userId && userType=@userType ";
+                    string query1 = "SELECT name FROM users WHERE userId=@userId AND userType=@userType ";
                     string query2 = "SELECT COUNT(*) FROM physicalbooks WHERE isbn=@isbn";
 
                     connection.Open();
 
-                    MySqlCommand getCommand = new MySqlCommand(query1, connection);
-                    MySqlCommand command = new MySqlCommand(query2, connection);
+                    SqlCommand getCommand = new SqlCommand(query1, connection);
+                    SqlCommand command = new SqlCommand(query2, connection);
                     command.Parameters.AddWithValue("@isbn", isbnTextBox.Text);
                     getCommand.Parameters.AddWithValue("@userId", userIdTextBox.Text);
                     getCommand.Parameters.AddWithValue("@userType", "student");
 
-                    MySqlDataReader reader = null;
+                    SqlDataReader reader = null;
 
                     try
                     {
@@ -115,7 +115,7 @@ namespace Library_Management_System
                     {
                         string query2 = "INSERT INTO borrowings (userId,name,isbn,borrowDate,returnDate,status) VALUES (@userId,@name,@isbn,@borrowDate,@returnDate,@status)";
                         connection.Open();
-                        MySqlCommand command = new MySqlCommand(query2, connection);
+                        SqlCommand command = new SqlCommand(query2, connection);
                         command.Parameters.AddWithValue("@userId", userIdTextBox.Text);
                         command.Parameters.AddWithValue("@name", name);
                         command.Parameters.AddWithValue("@status","Pending");

@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace Library_Management_System
 {
     public partial class updateBorrowings : Form
     {
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         string borrowingId;
         string userId;
         string name;
@@ -80,11 +80,11 @@ namespace Library_Management_System
 
             if (status == "Pending" && newStatus == "Returned")
             {
-                MySqlConnection connection = new MySqlConnection(connectionString);
+                SqlConnection connection = new SqlConnection(connectionString);
                 try
                 {
                     connection.Open();
-                    MySqlCommand updateCommand = new MySqlCommand("UPDATE borrowings SET status=@status WHERE borrowingId=@borrowingId",connection);
+                    SqlCommand updateCommand = new SqlCommand("UPDATE borrowings SET status=@status WHERE borrowingId=@borrowingId",connection);
                     updateCommand.Parameters.AddWithValue("@status", "Returned");
                     updateCommand.Parameters.AddWithValue("@borrowingId", borrowingId);
 

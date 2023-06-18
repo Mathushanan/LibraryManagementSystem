@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
 using System.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -62,7 +61,10 @@ namespace Library_Management_System
         }
         private void openStudentDashBoard()
         {
-            MessageBox.Show("student opened!");
+            studentDesktop obj1 = new studentDesktop();
+            this.Hide();
+            obj1.Show();
+            
         }
         private void openLibrarianDashBoard()
         {
@@ -110,23 +112,24 @@ namespace Library_Management_System
         private string validateUser(string userName,string password)
         {
             
-            string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
+            SqlConnection connection = new SqlConnection(connectionString);
             int count = 0;
             try
             {
 
                 connection.Open();
                 string query = "SELECT userType FROM users WHERE email = @userName AND password = @password";
-                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                SqlCommand checkCommand = new SqlCommand(query, connection);
                 checkCommand.Parameters.AddWithValue("@userName", userName);
                 checkCommand.Parameters.AddWithValue("@password", password);
 
-                using (MySqlDataReader reader = checkCommand.ExecuteReader())
+                using (SqlDataReader reader = checkCommand.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        return reader.GetString("userType");
+                        int userTypeOrdinal = reader.GetOrdinal("userType");
+                        return reader.GetString(userTypeOrdinal);
                     }
                 }
             }

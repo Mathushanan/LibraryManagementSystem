@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ namespace Library_Management_System
 {
     public partial class manageMembers : Form
     {
-        private string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public manageMembers()
         {
             InitializeComponent();
@@ -21,15 +21,15 @@ namespace Library_Management_System
 
         private void manageMembers_Load(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("Select * From users WHERE userType=@student", connection);
+                SqlCommand command = new SqlCommand("Select * From users WHERE userType=@student", connection);
                 string student = "student";
                 command.Parameters.AddWithValue("@student", student);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -39,8 +39,7 @@ namespace Library_Management_System
                 librariansDataGrid.DefaultCellStyle = new DataGridViewCellStyle();
 
                 librariansDataGrid.AllowUserToAddRows = false;
-                librariansDataGrid.Rows[librariansDataGrid.Rows.Count - 1].Visible = false;
-
+               
 
 
                 DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
@@ -87,14 +86,14 @@ namespace Library_Management_System
         }
         private void UpdateFormClosed(object sender, FormClosedEventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM users WHERE userType=@userType", connection);
+                SqlCommand command = new SqlCommand("SELECT * FROM users WHERE userType=@userType", connection);
                 command.Parameters.AddWithValue("@userType", "student");
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -120,15 +119,15 @@ namespace Library_Management_System
                 return;
             }
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand searchCommand = new MySqlCommand("SELECT * FROM users WHERE (name LIKE @searchKey OR userId LIKE @searchKey) AND userType=@student", connection);
+                SqlCommand searchCommand = new SqlCommand("SELECT * FROM users WHERE (name LIKE @searchKey OR userId LIKE @searchKey) AND userType=@student", connection);
                 searchCommand.Parameters.AddWithValue("@searchKey", "%" + searchKey + "%");
                 searchCommand.Parameters.AddWithValue("@student","student");
-                MySqlDataAdapter adapter = new MySqlDataAdapter(searchCommand);
+                SqlDataAdapter adapter = new SqlDataAdapter(searchCommand);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -146,17 +145,17 @@ namespace Library_Management_System
 
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
                 string query = "SELECT * FROM users WHERE userType=@student";
                 
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@student", "student");
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -188,11 +187,11 @@ namespace Library_Management_System
 
                         string id = row.Cells["userId"].Value.ToString();
 
-                        MySqlConnection connection = new MySqlConnection(connectionString);
+                        SqlConnection connection = new SqlConnection(connectionString);
                         try
                         {
                             connection.Open();
-                            MySqlCommand deleteCommand = new MySqlCommand("DELETE FROM users WHERE userId = @id", connection);
+                            SqlCommand deleteCommand = new SqlCommand("DELETE FROM users WHERE userId = @id", connection);
                             deleteCommand.Parameters.AddWithValue("@id", id);
                             int rowsAffected = deleteCommand.ExecuteNonQuery();
 

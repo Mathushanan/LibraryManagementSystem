@@ -8,29 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
 using System.IO;
 
 namespace Library_Management_System
 {
     public partial class updateEbooks : Form
     {
-        private string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         private string isbn = "";
         public updateEbooks(string isbn)
         {
             this.isbn = isbn;
             InitializeComponent();
         }
-
+        byte[] bookPdf = null;
         private void updateEbooks_Load(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             string title = "";
             byte[] imageData = null;
             string author = "";
             int year = 0;
             string category = "";
+           
             
 
             List<string> itemList = new List<string>
@@ -63,10 +63,10 @@ namespace Library_Management_System
             try
             {
                 connection.Open();
-                MySqlCommand retriveCommand = new MySqlCommand("SELECT title,image,author,publicationYear,category FROM eBooks WHERE isbn=@isbn", connection);
+                SqlCommand retriveCommand = new SqlCommand("SELECT title,image,author,publicationYear,category,pdf FROM ebooks WHERE isbn=@isbn", connection);
                 retriveCommand.Parameters.AddWithValue("@isbn", isbn);
 
-                MySqlDataReader reader = null;
+                SqlDataReader reader = null;
                 try
                 {
                     reader = retriveCommand.ExecuteReader();
@@ -76,9 +76,10 @@ namespace Library_Management_System
                         title = reader.GetString(0);
                         imageData = (byte[])reader.GetValue(1);
                         author = reader.GetString(2);
-                        year = Convert.ToInt32(reader.GetString(3));
+                        year = Convert.ToInt32(reader.GetInt32(3));
                         category = reader.GetString(4);
-                        
+                        bookPdf= (byte[])reader.GetValue(5);
+
 
                     }
 
@@ -120,7 +121,7 @@ namespace Library_Management_System
                 MessageBox.Show(ex.Message);
             }
         }
-        byte[] file;
+       
         private void uploadFileButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -132,7 +133,7 @@ namespace Library_Management_System
                 string filePath = openFileDialog.FileName;
 
 
-                file = File.ReadAllBytes(filePath);
+                bookPdf = File.ReadAllBytes(filePath);
 
             }
         }
@@ -165,17 +166,17 @@ namespace Library_Management_System
 
 
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                MySqlCommand updateCommand = new MySqlCommand("UPDATE ebooks SET title=@title,image=@image,author=@author,publicationYear=@year,category=@category,file=@file WHERE isbn=@isbn", connection);
+                SqlCommand updateCommand = new SqlCommand("UPDATE ebooks SET title=@title,image=@image,author=@author,publicationYear=@year,category=@category,pdf=@pdf WHERE isbn=@isbn", connection);
                 updateCommand.Parameters.AddWithValue("@title", title);
                 updateCommand.Parameters.AddWithValue("@image", imageData);
                 updateCommand.Parameters.AddWithValue("@author", author);
                 updateCommand.Parameters.AddWithValue("@category",category );
                 updateCommand.Parameters.AddWithValue("@year", year);
-                updateCommand.Parameters.AddWithValue("@file",file);
+                updateCommand.Parameters.AddWithValue("@pdf",bookPdf);
                 updateCommand.Parameters.AddWithValue("@isbn", isbn);
 
                 int rowsAffected = updateCommand.ExecuteNonQuery();

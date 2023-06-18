@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace Library_Management_System
 {
@@ -19,55 +19,65 @@ namespace Library_Management_System
             InitializeComponent();
         }
 
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         private void manageLibrarians_Load(object sender, EventArgs e)
         {
             
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("Select * From users", connection);
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                DataTable dataTable = new DataTable();
+                SqlCommand checkCommand =new SqlCommand("SELECT COUNT(*) FROM users",connection);
 
-                adapter.Fill(dataTable);
-                librariansDataGrid.DataSource = dataTable;
+                if (Convert.ToInt32(checkCommand.ExecuteScalar()) > 0)
+                {
+                    SqlCommand command = new SqlCommand("Select * From users", connection);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    librariansDataGrid.DataSource = dataTable;
+                    librariansDataGrid.DefaultCellStyle = new DataGridViewCellStyle();
+
+                  
+                    librariansDataGrid.AllowUserToAddRows = false;
+
+                    DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
+                    deleteButtonColumn.Name = "Delete";
+                    deleteButtonColumn.Text = "Delete";
+                    deleteButtonColumn.HeaderText = "Delete";
+                    deleteButtonColumn.UseColumnTextForButtonValue = true;
+                    librariansDataGrid.Columns.Add(deleteButtonColumn);
+
+                    deleteButtonColumn.DefaultCellStyle.BackColor = Color.Red;
+                    deleteButtonColumn.DefaultCellStyle.ForeColor = Color.White;
+                    deleteButtonColumn.DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+                    deleteButtonColumn.FlatStyle = FlatStyle.Flat;
+                    deleteButtonColumn.DefaultCellStyle.SelectionBackColor = Color.Red;
+
+                    DataGridViewButtonColumn updateButtonColumn = new DataGridViewButtonColumn();
+                    updateButtonColumn.Name = "Update";
+                    updateButtonColumn.Text = "Update";
+                    updateButtonColumn.UseColumnTextForButtonValue = true;
+                    librariansDataGrid.Columns.Add(updateButtonColumn);
+
+                    updateButtonColumn.DefaultCellStyle.BackColor = Color.Green;
+                    updateButtonColumn.DefaultCellStyle.ForeColor = Color.White;
+                    updateButtonColumn.DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
+                    updateButtonColumn.FlatStyle = FlatStyle.Flat;
+                    updateButtonColumn.DefaultCellStyle.SelectionBackColor = Color.Green;
+                }
+                else
+                {
+                    MessageBox.Show("Your Database is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
 
-                librariansDataGrid.DefaultCellStyle = new DataGridViewCellStyle();
-
-                librariansDataGrid.AllowUserToAddRows = false;
-                librariansDataGrid.Rows[librariansDataGrid.Rows.Count - 1].Visible = false;
-
-
-                DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-                deleteButtonColumn.Name = "Delete";
-                deleteButtonColumn.Text = "Delete";
-                deleteButtonColumn.HeaderText = "Delete";
-                deleteButtonColumn.UseColumnTextForButtonValue = true;
-                librariansDataGrid.Columns.Add(deleteButtonColumn);
-
-                deleteButtonColumn.DefaultCellStyle.BackColor = Color.Red;
-                deleteButtonColumn.DefaultCellStyle.ForeColor = Color.White;
-                deleteButtonColumn.DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
-                deleteButtonColumn.FlatStyle = FlatStyle.Flat;
-                deleteButtonColumn.DefaultCellStyle.SelectionBackColor=Color.Red;
-
-                DataGridViewButtonColumn updateButtonColumn = new DataGridViewButtonColumn();
-                updateButtonColumn.Name = "Update";
-                updateButtonColumn.Text = "Update";
-                updateButtonColumn.UseColumnTextForButtonValue = true;
-                librariansDataGrid.Columns.Add(updateButtonColumn);
-
-                updateButtonColumn.DefaultCellStyle.BackColor = Color.Green;
-                updateButtonColumn.DefaultCellStyle.ForeColor = Color.White;
-                updateButtonColumn.DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
-                updateButtonColumn.FlatStyle = FlatStyle.Flat;
-                updateButtonColumn.DefaultCellStyle.SelectionBackColor = Color.Green;
+               
             }
             catch (Exception ex)
             {
@@ -97,11 +107,11 @@ namespace Library_Management_System
                        
                         string id = row.Cells["userId"].Value.ToString();
 
-                        MySqlConnection connection = new MySqlConnection(connectionString);
+                        SqlConnection connection = new SqlConnection(connectionString);
                         try
                         {
                             connection.Open();
-                            MySqlCommand deleteCommand = new MySqlCommand("DELETE FROM users WHERE userId = @id", connection);
+                            SqlCommand deleteCommand = new SqlCommand("DELETE FROM users WHERE userId = @id", connection);
                             deleteCommand.Parameters.AddWithValue("@id", id);
                             int rowsAffected = deleteCommand.ExecuteNonQuery();
 
@@ -150,14 +160,14 @@ namespace Library_Management_System
         private void UpdateFormClosed(object sender, FormClosedEventArgs e)
         {
             
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM users", connection);
+                SqlCommand command = new SqlCommand("SELECT * FROM users", connection);
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -183,14 +193,14 @@ namespace Library_Management_System
                 return;
             }
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand searchCommand = new MySqlCommand("SELECT * FROM users WHERE name LIKE @searchKey OR userId LIKE @searchKey",connection);
+                SqlCommand searchCommand = new SqlCommand("SELECT * FROM users WHERE name LIKE @searchKey OR userId LIKE @searchKey",connection);
                 searchCommand.Parameters.AddWithValue("@searchKey", "%"+searchKey+"%");
-                MySqlDataAdapter adapter = new MySqlDataAdapter(searchCommand);
+                SqlDataAdapter adapter = new SqlDataAdapter(searchCommand);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -208,15 +218,15 @@ namespace Library_Management_System
 
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
                 string query = "SELECT * FROM users";
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                SqlCommand cmd = new SqlCommand(query, connection);
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);

@@ -36,3 +36,17 @@ C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Manage
 C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.updateMembers.resources
 C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.addBorrowings.resources
 C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.updateBorrowings.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.studentDesktop.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.studentDashBoard.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.studentBorrowings.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.studentEbooks.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.studentEvents.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.studentManageAccount.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.studentPhysicalBooks.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.studentVirtualGroups.resources
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\bin\Debug\LibraryManagementSystem.mdf
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\bin\Debug\LibraryManagementSystem_log.ldf
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\bin\Debug\Library_Management_System.exe.manifest
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\bin\Debug\Library_Management_System.application
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.exe.manifest
+C:\Users\Mathu\OneDrive\Desktop\Project\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.application

@@ -133,6 +133,7 @@
             this.borrowedDetailsDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.borrowedDetailsDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.borrowedDetailsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.borrowedDetailsDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
+
 
 namespace Library_Management_System
 {
@@ -40,9 +40,9 @@ namespace Library_Management_System
 
         private void addLibrariansButton_Click(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
            
 
             if (string.IsNullOrWhiteSpace(idTextBox.Text) || string.IsNullOrWhiteSpace(nameTextBox.Text) || string.IsNullOrWhiteSpace(emailTextBox.Text) || string.IsNullOrWhiteSpace(passwordTextBox.Text) || string.IsNullOrWhiteSpace(confirmTextBox.Text))
@@ -65,18 +65,21 @@ namespace Library_Management_System
                     string password = passwordTextBox.Text;
                     string confirmPassword = confirmTextBox.Text;
                     string userType = "librarian";
+                    int userId = Convert.ToInt32(idTextBox.Text);
+
 
                     connection.Open();
-                    string query1 = "Select COUNT(*) FROM users WHERE email=@email";
-                    MySqlCommand checkCommand = new MySqlCommand(query1, connection);
+                    string query1 = "Select COUNT(*) FROM users WHERE email=@email OR userId=@userId";
+                    SqlCommand checkCommand = new SqlCommand(query1, connection);
                     checkCommand.Parameters.AddWithValue("@email", email);
+                    checkCommand.Parameters.AddWithValue("@userId", userId);
                     int count = Convert.ToInt32(checkCommand.ExecuteScalar());
 
                     if (count ==0)
                     {
                         
                         string query2 = "INSERT INTO users (userId,name,email,password,userType) VALUES (@id,@name,@email,@password,@userType)";
-                        MySqlCommand cmd = new MySqlCommand(query2, connection);
+                        SqlCommand cmd = new SqlCommand(query2, connection);
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.Parameters.AddWithValue("@name", name);
                         cmd.Parameters.AddWithValue("@email", email);
@@ -99,7 +102,7 @@ namespace Library_Management_System
                     }
                     else
                     {
-                        MessageBox.Show("Username already exit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("User already exit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                
@@ -113,6 +116,11 @@ namespace Library_Management_System
                 }
             }
             
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

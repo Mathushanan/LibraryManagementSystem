@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ namespace Library_Management_System
     public partial class addEvent : Form
     {
         private Image defaultImage;
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
 
         public addEvent()
         {
@@ -66,9 +66,9 @@ namespace Library_Management_System
                 try
                 {
                     int count = 0;
-                    MySqlConnection connection = new MySqlConnection(connectionString);
+                    SqlConnection connection = new SqlConnection(connectionString);
                     string query1 = "SELECT COUNT(*) FROM events WHERE title=@title";
-                    MySqlCommand checkCommand = new MySqlCommand(query1, connection);
+                    SqlCommand checkCommand = new SqlCommand(query1, connection);
                     try
                     {
                         connection.Open();
@@ -105,7 +105,7 @@ namespace Library_Management_System
                             
                             connection.Open();
                             string query2 = "INSERT INTO events (title,image,description,location,date) VALUES (@title,@ImageData,@description,@location,@date)";
-                            MySqlCommand command = new MySqlCommand(query2, connection);
+                            SqlCommand command = new SqlCommand(query2, connection);
                             try
                             {
                                 command.Parameters.AddWithValue("@ImageData", imageData);

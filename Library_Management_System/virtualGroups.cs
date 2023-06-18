@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,14 +12,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using System.Data.SqlClient;
 using System.Xml;
 
 namespace Library_Management_System
 {
     public partial class virtualGroups : Form
     {
-        private string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         int groupId = 0;
         public virtualGroups()
         {
@@ -45,12 +44,12 @@ namespace Library_Management_System
         private void LoadBookData()
         {
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM virtualgroups", connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlCommand command = new SqlCommand("SELECT * FROM virtualgroups", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
@@ -204,13 +203,13 @@ namespace Library_Management_System
             DialogResult result = MessageBox.Show("Are you sure you want to delete this entry?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                MySqlConnection connection = new MySqlConnection(connectionString);
+                SqlConnection connection = new SqlConnection(connectionString);
 
                 try
                 {
                     connection.Open();
                     string query = "DELETE FROM virtualgroups WHERE groupId = @groupId";
-                    MySqlCommand deleteCommand = new MySqlCommand(query, connection);
+                    SqlCommand deleteCommand = new SqlCommand(query, connection);
                     deleteCommand.Parameters.AddWithValue("@groupId", groupId);
 
                     int rowsAffected = deleteCommand.ExecuteNonQuery();
@@ -276,13 +275,13 @@ namespace Library_Management_System
                 return;
             }
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM virtualgroups WHERE name LIKE @searchKey OR description LIKE @searchKey", connection);
+                SqlCommand command = new SqlCommand("SELECT * FROM virtualgroups WHERE name LIKE @searchKey OR description LIKE @searchKey", connection);
                 command.Parameters.AddWithValue("@searchKey", "%" + searchKey + "%");
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
@@ -315,12 +314,12 @@ namespace Library_Management_System
 
             Button joinButton = (Button)sender;
             int groupId = Convert.ToInt32(joinButton.Tag);
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand retrieveCommand = new MySqlCommand("SELECT url FROM virtualgroups WHERE groupId=@groupId", connection);
+                SqlCommand retrieveCommand = new SqlCommand("SELECT url FROM virtualgroups WHERE groupId=@groupId", connection);
                 retrieveCommand.Parameters.AddWithValue("@groupId", groupId);
                 object result = retrieveCommand.ExecuteScalar();
 

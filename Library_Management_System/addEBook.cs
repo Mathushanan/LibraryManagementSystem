@@ -1,9 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -17,7 +16,7 @@ namespace Library_Management_System
     public partial class addEBook : Form
     {
         private Image defaultImage;
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public addEBook()
         {
             InitializeComponent();
@@ -140,9 +139,9 @@ namespace Library_Management_System
                 int count = 0;
                 try
                 {
-                    MySqlConnection connection = new MySqlConnection(connectionString);
+                    SqlConnection connection = new SqlConnection(connectionString);
                     string query2 = "SELECT COUNT(*) FROM ebooks WHERE isbn=@isbn";
-                    MySqlCommand checkCommand = new MySqlCommand(query2, connection);
+                    SqlCommand checkCommand = new SqlCommand(query2, connection);
 
                     try
                     {
@@ -182,10 +181,10 @@ namespace Library_Management_System
 
                     try
                     {
-                        MySqlConnection connection = new MySqlConnection(connectionString);
+                        SqlConnection connection = new SqlConnection(connectionString);
                         connection.Open();
-                        string query = "INSERT INTO ebooks (title,image,author,isbn,publicationYear,category,file) VALUES (@title,@ImageData,@author,@isbn,@year,@category,@PdfData)";
-                        MySqlCommand command = new MySqlCommand(query, connection);
+                        string query = "INSERT INTO ebooks (title,image,author,isbn,publicationYear,category,pdf,downloadCount) VALUES (@title,@ImageData,@author,@isbn,@year,@category,@PdfData,@count)";
+                        SqlCommand command = new SqlCommand(query, connection);
                         try
                         {
                             command.Parameters.AddWithValue("@ImageData", imageData);
@@ -195,6 +194,7 @@ namespace Library_Management_System
                             command.Parameters.AddWithValue("@author", author);
                             command.Parameters.AddWithValue("@year", year);
                             command.Parameters.AddWithValue("@category", category);
+                            command.Parameters.AddWithValue("@count", 0);
                             command.ExecuteNonQuery();
 
                         }

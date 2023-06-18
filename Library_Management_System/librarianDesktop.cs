@@ -123,7 +123,7 @@ namespace Library_Management_System
 
         private void borrowedDetailsButton_Click(object sender, EventArgs e)
         {
-            titleLabel.Text = "Borrowed Details";
+            titleLabel.Text = "Borrowings";
             dashBoardButton.BackColor = ColorTranslator.FromHtml("#19589D");
             physicalBooksButton.BackColor = ColorTranslator.FromHtml("#19589D");
             eBooksButton.BackColor = ColorTranslator.FromHtml("#19589D");

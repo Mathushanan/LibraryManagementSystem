@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ namespace Library_Management_System
     public partial class borrowedDetails : Form
     {
 
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public borrowedDetails()
         {
             InitializeComponent();
@@ -22,14 +22,14 @@ namespace Library_Management_System
 
         private void borrowedDetails_Load(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("Select * From borrowings", connection);
+                SqlCommand command = new SqlCommand("Select * From borrowings", connection);
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -64,7 +64,7 @@ namespace Library_Management_System
                 updateButtonColumn.DefaultCellStyle.SelectionBackColor = Color.Green;
 
                 borrowedDetailsDataGrid.AllowUserToAddRows = false;
-                borrowedDetailsDataGrid.Rows[borrowedDetailsDataGrid.Rows.Count - 1].Visible = false;
+               
             }
             catch (Exception ex)
             {
@@ -86,14 +86,14 @@ namespace Library_Management_System
                 return;
             }
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand searchCommand = new MySqlCommand("SELECT * FROM borrowings WHERE name LIKE @searchKey OR userId LIKE @searchKey OR borrowingId LIKE @searchKey", connection);
+                SqlCommand searchCommand = new SqlCommand("SELECT * FROM borrowings WHERE name LIKE @searchKey OR userId LIKE @searchKey OR borrowingId LIKE @searchKey", connection);
                 searchCommand.Parameters.AddWithValue("@searchKey", "%" + searchKey + "%");
-                MySqlDataAdapter adapter = new MySqlDataAdapter(searchCommand);
+                SqlDataAdapter adapter = new SqlDataAdapter(searchCommand);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -111,15 +111,15 @@ namespace Library_Management_System
 
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
                 string query = "SELECT * FROM borrowings";
 
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
@@ -145,16 +145,16 @@ namespace Library_Management_System
 
         private void pendingButton_Click(object sender, EventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
                 string query = "SELECT * FROM borrowings WHERE status=@status";
 
-                MySqlCommand cmd = new MySqlCommand(query, connection);
+                SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@status", "Pending");
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 borrowedDetailsDataGrid.DataSource = dataTable;
@@ -186,11 +186,11 @@ namespace Library_Management_System
 
                         string id = row.Cells["borrowingId"].Value.ToString();
 
-                        MySqlConnection connection = new MySqlConnection(connectionString);
+                        SqlConnection connection = new SqlConnection(connectionString);
                         try
                         {
                             connection.Open();
-                            MySqlCommand deleteCommand = new MySqlCommand("DELETE FROM borrowings WHERE borrowingId = @borrowingId", connection);
+                            SqlCommand deleteCommand = new SqlCommand("DELETE FROM borrowings WHERE borrowingId = @borrowingId", connection);
                             deleteCommand.Parameters.AddWithValue("@borrowingId", id);
                             int rowsAffected = deleteCommand.ExecuteNonQuery();
 
@@ -235,13 +235,13 @@ namespace Library_Management_System
         }
         private void UpdateFormClosed(object sender, FormClosedEventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
-                MySqlCommand command = new MySqlCommand("SELECT * FROM borrowings", connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                SqlCommand command = new SqlCommand("SELECT * FROM borrowings", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);

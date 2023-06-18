@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -20,7 +19,7 @@ namespace Library_Management_System
 
 
 
-        string connectionString = "server=localhost;database=libraryManagementSystem;uid=root;password=;";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public updatePhysicalBooks(string isbn)
         {
             InitializeComponent();
@@ -58,12 +57,12 @@ namespace Library_Management_System
             byte[] imageData = ms.ToArray();
 
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             string query = "UPDATE physicalbooks SET title=@title,image=@image,author=@author,publicationYear=@publicationYear,category=@category WHERE isbn=@isbn";
             try
             {
                 connection.Open();
-                MySqlCommand updateCommand = new MySqlCommand(query, connection);
+                SqlCommand updateCommand = new SqlCommand(query, connection);
                 updateCommand.Parameters.AddWithValue("@title", titleTextBox.Text);
                 updateCommand.Parameters.AddWithValue("@image", imageData);
                 updateCommand.Parameters.AddWithValue("@isbn", isbn);
@@ -140,15 +139,15 @@ namespace Library_Management_System
           
 
 
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
             string query = "SELECT title,image,author,isbn,publicationYear,category FROM physicalbooks WHERE isbn=@isbn";
             try
             {
                 connection.Open();
-                MySqlCommand getCommand = new MySqlCommand(query, connection);
+                SqlCommand getCommand = new SqlCommand(query, connection);
                 getCommand.Parameters.AddWithValue("@isbn", isbn);
 
-                MySqlDataReader reader = null;
+                SqlDataReader reader = null;
                 try
                 {
                     reader=getCommand.ExecuteReader();
@@ -202,6 +201,11 @@ namespace Library_Management_System
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
