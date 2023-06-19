@@ -41,18 +41,27 @@ namespace Library_Management_System
             {
                 SqlConnection connection = new SqlConnection(connectionString);
                 string name = null;
-                
+                int count = 0;
                 try
                 {
                     
                     string query1 = "SELECT name FROM users WHERE userId=@userId AND userType=@userType ";
                     string query2 = "SELECT COUNT(*) FROM physicalbooks WHERE isbn=@isbn";
+                    string query3 = "SELECT COUNT(*) FROM physicalbooks WHERE isbn=@isbn AND status=@status";
 
                     connection.Open();
 
-                    SqlCommand getCommand = new SqlCommand(query1, connection);
+                   
                     SqlCommand command = new SqlCommand(query2, connection);
                     command.Parameters.AddWithValue("@isbn", isbnTextBox.Text);
+
+                    SqlCommand validateCommand = new SqlCommand(query3, connection);
+                    validateCommand.Parameters.AddWithValue("@isbn", isbnTextBox.Text);
+                    validateCommand.Parameters.AddWithValue("@status", "Available");
+                    
+                    count=Convert.ToInt32(validateCommand.ExecuteScalar());
+
+                    SqlCommand getCommand = new SqlCommand(query1, connection);
                     getCommand.Parameters.AddWithValue("@userId", userIdTextBox.Text);
                     getCommand.Parameters.AddWithValue("@userType", "student");
 
@@ -108,6 +117,10 @@ namespace Library_Management_System
                 else if (isBookIdValid==false)
                 {
                     MessageBox.Show("Invalid Book ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (count<1)
+                {
+                    MessageBox.Show("Book already borrowed!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {

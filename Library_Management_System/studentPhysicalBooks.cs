@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Library_Management_System.Properties;
+
 
 namespace Library_Management_System
 {
@@ -245,12 +247,12 @@ namespace Library_Management_System
                 // Set the image for the visible PictureBoxes (e.g., filled star icon) if it's within the rating
                 if (i < rating)
                 {
-                    ratingPictureBoxes[i].Image = Image.FromFile("C:\\Users\\Mathu\\Downloads\\icons8-star-filled-48.png"); // Replace with the actual image path
+                    ratingPictureBoxes[i].Image = Resources.filled_star;
                 }
                 else
                 {
                     // Set the image for the hidden PictureBoxes (e.g., empty star icon)
-                    ratingPictureBoxes[i].Image = Image.FromFile("C:\\Users\\Mathu\\Downloads\\icons8-star-48.png"); // Replace with the actual image path
+                    ratingPictureBoxes[i].Image = Resources.blank_star;
                 }
 
                 // Add the PictureBox to the profileCard panel
@@ -285,7 +287,7 @@ namespace Library_Management_System
             Button updateButton = (Button)sender;
             string isbn = updateButton.Tag.ToString();
 
-            updatePhysicalBooks obj1 = new updatePhysicalBooks(isbn);
+            physicalBookRating obj1 = new physicalBookRating(userName,isbn);
             obj1.Show();
             obj1.FormClosed += UpdateFormClosed;
 

@@ -103,3 +103,4 @@ C:\Users\Mathu\OneDrive\Desktop\Github_LMS\Library_Management_System\Library_Man
 C:\Users\Mathu\OneDrive\Desktop\Github_LMS\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.exe
 C:\Users\Mathu\OneDrive\Desktop\Github_LMS\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.pdb
 C:\Users\Mathu\OneDrive\Desktop\Github_LMS\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.borrowBook.resources
+C:\Users\Mathu\OneDrive\Desktop\Github_LMS\Library_Management_System\Library_Management_System\obj\Debug\Library_Management_System.physicalBookRating.resources

@@ -188,6 +188,12 @@
     <Compile Include="manageUsers.Designer.cs">
       <DependentUpon>manageUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="physicalBookRating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="physicalBookRating.Designer.cs">
+      <DependentUpon>physicalBookRating.cs</DependentUpon>
+    </Compile>
     <Compile Include="physicalBooks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -346,6 +352,9 @@
     <EmbeddedResource Include="manageUsers.resx">
       <DependentUpon>manageUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="physicalBookRating.resx">
+      <DependentUpon>physicalBookRating.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="physicalBooks.resx">
       <DependentUpon>physicalBooks.cs</DependentUpon>
     </EmbeddedResource>
@@ -462,6 +471,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>LibraryManagementSystem.mdf</DependentUpon>
     </Content>
+    <Content Include="Resources\61zk7g3q18l.jpg" />
+    <None Include="Resources\619542_add_favourites_save_star_favorite_icon.png" />
+    <None Include="Resources\619555_favourite_save_bookmark_favorite_like_icon.png" />
+    <None Include="Resources\1054969_star_icon.png" />
+    <None Include="Resources\353442_bookmark_circle_favorite_star_favorites_icon1.png" />
+    <None Include="Resources\1930255_galaxy_green_star_icon.png" />
+    <None Include="Resources\353442_bookmark_circle_favorite_star_favorites_icon.png" />
+    <None Include="Resources\icons8-star-filled-48.png" />
+    <None Include="Resources\icons8-star-48.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

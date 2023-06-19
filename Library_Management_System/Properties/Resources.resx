@@ -118,37 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="5172576_camera_image_picture_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5172576_camera_image_picture_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="314793_upload_folder_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\314793_upload_folder_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="green_star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\619555_favourite_save_bookmark_favorite_like_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="10239767_hide_close eye_eye_hidden_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\10239767_hide_close eye_eye_hidden_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="2538749_key_open_password_security_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2538749_key_open_password_security_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="326724_hidden_off_visibility_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\326724_hidden_off_visibility_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="nsbm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\nsbm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="5172576_camera_image_picture_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5172576_camera_image_picture_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="969265_cogwheels_seo_setting_configuration_gear_icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\969265_cogwheels_seo_setting_configuration_gear_icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="326724_hidden_off_visibility_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\326724_hidden_off_visibility_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="blank_star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-star-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="314793_upload_folder_icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\314793_upload_folder_icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="filled_star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-star-filled-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="5402435_account_profile_user_avatar_man_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5402435_account_profile_user_avatar_man_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="nsbm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nsbm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="7295021_photos_photography_camera_photo_picture_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\7295021_photos_photography_camera_photo_picture_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="314499_cloud_upload_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\314499_cloud_upload_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pink_star" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\619542_add_favourites_save_star_favorite_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

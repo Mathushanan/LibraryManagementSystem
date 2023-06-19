@@ -185,6 +185,7 @@ namespace Library_Management_System
                     {
 
                         string id = row.Cells["borrowingId"].Value.ToString();
+                        string isbn= row.Cells["isbn"].Value.ToString();
 
                         SqlConnection connection = new SqlConnection(connectionString);
                         try
@@ -198,7 +199,30 @@ namespace Library_Management_System
                             {
 
                                 borrowedDetailsDataGrid.Rows.RemoveAt(e.RowIndex);
-                                MessageBox.Show("Entry deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                try
+                                {
+
+                                    string query = "UPDATE physicalbooks SET status=@status WHERE isbn=@isbn";
+                                    SqlCommand updateCommand = new SqlCommand(query, connection);
+                                    updateCommand.Parameters.AddWithValue("@status", "Available");
+                                    updateCommand.Parameters.AddWithValue("@isbn", isbn);
+
+                                    if (Convert.ToInt32(updateCommand.ExecuteNonQuery()) > 0)
+                                    {
+                                        MessageBox.Show("Entry deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        
+                                    }
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+
+
+                                
                             }
                             else
                             {

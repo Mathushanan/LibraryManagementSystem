@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Library_Management_System.exe" size="477640">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Library_Management_System.exe" size="459208">
       <assemblyIdentity name="Library_Management_System" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Dsxd0esBHZSbmPMx/fW2u9C8goWew1PVRONXY4qONvc=</dsig:DigestValue>
+        <dsig:DigestValue>1BOQ1lv57s8bVkZD4wRopPWG+bRKb6bwVG+RitkGyiw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -80,7 +80,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>EGocWKRQrEn3CG7L4gMS/qw3L47FWS846u8yOI601Bs=</dsig:DigestValue>
+      <dsig:DigestValue>tCpn8lmk273KZN8DoXVHIDRRGD4nkGtJWlNe4wVt3J0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LibraryManagementSystem_log.ldf" size="8388608" writeableType="applicationData">
@@ -89,7 +89,16 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>jjQjuIijgQm+6fS+m33cADh6PBjmpHTccFgydBTAB2E=</dsig:DigestValue>
+      <dsig:DigestValue>Hhet+5oLN3zEvezOVPaf6fVEOGeJN5u+42Fv7346kao=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\61zk7g3q18l.jpg" size="64689">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>DqHXISYYsSGq6uDv1c2Bg8xkG5QZzjMy1JTIeU8m2ys=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

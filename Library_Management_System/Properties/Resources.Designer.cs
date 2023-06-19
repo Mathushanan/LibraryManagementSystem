@@ -73,46 +73,6 @@ namespace Library_Management_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _2538749_key_open_password_security_icon {
-            get {
-                object obj = ResourceManager.GetObject("2538749_key_open_password_security_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _314499_cloud_upload_icon {
-            get {
-                object obj = ResourceManager.GetObject("314499_cloud_upload_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _314793_upload_folder_icon {
-            get {
-                object obj = ResourceManager.GetObject("314793_upload_folder_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _314793_upload_folder_icon1 {
-            get {
-                object obj = ResourceManager.GetObject("314793_upload_folder_icon1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _326724_hidden_off_visibility_icon {
             get {
                 object obj = ResourceManager.GetObject("326724_hidden_off_visibility_icon", resourceCulture);
@@ -133,26 +93,6 @@ namespace Library_Management_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _5402435_account_profile_user_avatar_man_icon {
-            get {
-                object obj = ResourceManager.GetObject("5402435_account_profile_user_avatar_man_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _7295021_photos_photography_camera_photo_picture_icon {
-            get {
-                object obj = ResourceManager.GetObject("7295021_photos_photography_camera_photo_picture_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _969265_cogwheels_seo_setting_configuration_gear_icon__1_ {
             get {
                 object obj = ResourceManager.GetObject("969265_cogwheels_seo_setting_configuration_gear_icon (1)", resourceCulture);
@@ -163,9 +103,49 @@ namespace Library_Management_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blank_star {
+            get {
+                object obj = ResourceManager.GetObject("blank_star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap filled_star {
+            get {
+                object obj = ResourceManager.GetObject("filled_star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap green_star {
+            get {
+                object obj = ResourceManager.GetObject("green_star", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nsbm {
             get {
                 object obj = ResourceManager.GetObject("nsbm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pink_star {
+            get {
+                object obj = ResourceManager.GetObject("pink_star", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
