@@ -143,12 +143,13 @@ namespace Library_Management_System
                         {
                             
                             connection.Open();
-                            string query2 = "INSERT INTO physicalbooks (title,image,author,isbn,publicationYear,category) VALUES (@title,@ImageData,@author,@isbn,@year,@category)";
+                            string query2 = "INSERT INTO physicalbooks (title,image,author,isbn,publicationYear,category,status) VALUES (@title,@ImageData,@author,@isbn,@year,@category,@status)";
                             SqlCommand command = new SqlCommand(query2, connection);
                             try
                             {
                                 command.Parameters.AddWithValue("@ImageData", imageData);
                                 command.Parameters.AddWithValue("@title", title);
+                                command.Parameters.AddWithValue("@status", "Available");
                                 command.Parameters.AddWithValue("@author", author);
                                 command.Parameters.AddWithValue("@isbn", isbn);
                                 command.Parameters.AddWithValue("@year", year);

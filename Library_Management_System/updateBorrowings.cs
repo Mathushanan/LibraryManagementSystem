@@ -90,7 +90,27 @@ namespace Library_Management_System
 
                     if (updateCommand.ExecuteNonQuery() > 0)
                     {
-                        MessageBox.Show("Entry updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        try
+                        {
+
+                            string query = "UPDATE physicalbooks SET status=@status WHERE isbn=@isbn";
+                            SqlCommand Command = new SqlCommand(query, connection);
+                            Command.Parameters.AddWithValue("@status", "Available");
+                            Command.Parameters.AddWithValue("@isbn", isbn);
+
+                            if (Convert.ToInt32(Command.ExecuteNonQuery()) > 0)
+                            {
+                                MessageBox.Show("Entry updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        
                     }
                     else
                     {

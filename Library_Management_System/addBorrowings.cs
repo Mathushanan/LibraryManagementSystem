@@ -124,11 +124,35 @@ namespace Library_Management_System
                         command.Parameters.AddWithValue("@returnDate", dateTimePicker2.Value.Date.ToString("yyyy-MM-dd"));
                         if (command.ExecuteNonQuery() > 0)
                         {
+
+
+                            try
+                            {
+
+                                string query = "UPDATE physicalbooks SET status=@status WHERE isbn=@isbn";
+                                SqlCommand updateCommand = new SqlCommand(query, connection);
+                                updateCommand.Parameters.AddWithValue("@status", "Borrowed");
+                                updateCommand.Parameters.AddWithValue("@isbn", isbnTextBox.Text);
+
+                                if (Convert.ToInt32(updateCommand.ExecuteNonQuery()) > 0)
+                                {
+                                    MessageBox.Show("Borrowing details saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                 
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+
+
                             userIdTextBox.Text = "";
                             isbnTextBox.Text = "";
                             dateTimePicker2.Value = DateTime.Now;
                             dateTimePicker1.Value = DateTime.Now;
-                            MessageBox.Show("Borrowing details saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            
                         }
 
                     }

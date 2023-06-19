@@ -59,9 +59,11 @@ namespace Library_Management_System
             
             passwordTextBox.BorderStyle = BorderStyle.None;
         }
+        
         private void openStudentDashBoard()
         {
-            studentDesktop obj1 = new studentDesktop();
+            string userName = usernameTextBox.Text;
+            studentDesktop obj1 = new studentDesktop(userName);
             this.Hide();
             obj1.Show();
             
@@ -80,8 +82,11 @@ namespace Library_Management_System
         }
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string userName = usernameTextBox.Text;
+            
             string password = passwordTextBox.Text;
+            string userName = usernameTextBox.Text;
+
+            studentDesktop obj1 = new studentDesktop(userName);
 
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {

@@ -12,8 +12,10 @@ namespace Library_Management_System
 {
     public partial class studentDesktop : Form
     {
-        public studentDesktop()
+        private string userName="";
+        public studentDesktop(string userName)
         {
+            this.userName = userName;
             InitializeComponent();
         }
 
@@ -56,7 +58,7 @@ namespace Library_Management_System
             membersButton.BackColor = ColorTranslator.FromHtml("#19589D");
 
 
-            studentDashBoard obj1 = new studentDashBoard();
+            studentDashBoard obj1 = new studentDashBoard(userName);
             openChildForm(obj1, sender);
         }
 
@@ -71,7 +73,7 @@ namespace Library_Management_System
             borrowedDetailsButton.BackColor = ColorTranslator.FromHtml("#19589D");
             membersButton.BackColor = ColorTranslator.FromHtml("#19589D");
 
-            studentPhysicalBooks obj1 = new studentPhysicalBooks();
+            studentPhysicalBooks obj1 = new studentPhysicalBooks(userName);
             openChildForm(obj1, sender);
         }
 

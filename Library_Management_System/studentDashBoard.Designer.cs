@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.labelPendingFee = new System.Windows.Forms.Label();
-            this.pendingFeeLabel = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelTotalEBooksDwnloaded = new System.Windows.Forms.Label();
             this.eBooksCountLabel = new System.Windows.Forms.Label();
@@ -40,51 +37,17 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelTotalBooksBorrowed = new System.Windows.Forms.Label();
             this.physicalBookCountLabel = new System.Windows.Forms.Label();
-            this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(181)))), ((int)(((byte)(74)))));
-            this.panel10.Controls.Add(this.labelPendingFee);
-            this.panel10.Controls.Add(this.pendingFeeLabel);
-            this.panel10.Location = new System.Drawing.Point(131, 358);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(340, 116);
-            this.panel10.TabIndex = 13;
-            // 
-            // labelPendingFee
-            // 
-            this.labelPendingFee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
-            this.labelPendingFee.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPendingFee.ForeColor = System.Drawing.Color.White;
-            this.labelPendingFee.Location = new System.Drawing.Point(120, 65);
-            this.labelPendingFee.Name = "labelPendingFee";
-            this.labelPendingFee.Size = new System.Drawing.Size(100, 40);
-            this.labelPendingFee.TabIndex = 1;
-            this.labelPendingFee.Text = "12";
-            this.labelPendingFee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pendingFeeLabel
-            // 
-            this.pendingFeeLabel.AutoSize = true;
-            this.pendingFeeLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pendingFeeLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.pendingFeeLabel.Location = new System.Drawing.Point(70, 9);
-            this.pendingFeeLabel.Name = "pendingFeeLabel";
-            this.pendingFeeLabel.Size = new System.Drawing.Size(195, 34);
-            this.pendingFeeLabel.TabIndex = 0;
-            this.pendingFeeLabel.Text = "Pending Fees";
             // 
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(181)))), ((int)(((byte)(74)))));
             this.panel8.Controls.Add(this.labelTotalEBooksDwnloaded);
             this.panel8.Controls.Add(this.eBooksCountLabel);
-            this.panel8.Location = new System.Drawing.Point(605, 358);
+            this.panel8.Location = new System.Drawing.Point(377, 364);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(340, 119);
             this.panel8.TabIndex = 14;
@@ -183,14 +146,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 653);
-            this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel3);
             this.Name = "studentDashBoard";
             this.Text = "studentDashBoard";
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
+            this.Load += new System.EventHandler(this.studentDashBoard_Load);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -202,10 +163,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label labelPendingFee;
-        private System.Windows.Forms.Label pendingFeeLabel;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label labelTotalEBooksDwnloaded;
         private System.Windows.Forms.Label eBooksCountLabel;
