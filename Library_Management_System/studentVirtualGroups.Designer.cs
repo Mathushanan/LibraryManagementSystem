@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.addBooksButton = new System.Windows.Forms.Button();
             this.viewAllButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2.SuspendLayout();
@@ -42,7 +41,6 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.addBooksButton);
             this.panel2.Controls.Add(this.viewAllButton);
             this.panel2.Location = new System.Drawing.Point(45, 12);
             this.panel2.Name = "panel2";
@@ -84,21 +82,6 @@
             this.searchTextBox.Size = new System.Drawing.Size(281, 37);
             this.searchTextBox.TabIndex = 0;
             // 
-            // addBooksButton
-            // 
-            this.addBooksButton.AutoSize = true;
-            this.addBooksButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(196)))), ((int)(((byte)(227)))));
-            this.addBooksButton.FlatAppearance.BorderSize = 0;
-            this.addBooksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addBooksButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBooksButton.ForeColor = System.Drawing.Color.White;
-            this.addBooksButton.Location = new System.Drawing.Point(803, 33);
-            this.addBooksButton.Name = "addBooksButton";
-            this.addBooksButton.Size = new System.Drawing.Size(179, 38);
-            this.addBooksButton.TabIndex = 3;
-            this.addBooksButton.Text = "Add Groups";
-            this.addBooksButton.UseVisualStyleBackColor = false;
-            // 
             // viewAllButton
             // 
             this.viewAllButton.AutoSize = true;
@@ -107,12 +90,13 @@
             this.viewAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewAllButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewAllButton.ForeColor = System.Drawing.Color.White;
-            this.viewAllButton.Location = new System.Drawing.Point(548, 33);
+            this.viewAllButton.Location = new System.Drawing.Point(756, 34);
             this.viewAllButton.Name = "viewAllButton";
             this.viewAllButton.Size = new System.Drawing.Size(179, 38);
             this.viewAllButton.TabIndex = 3;
             this.viewAllButton.Text = "View All";
             this.viewAllButton.UseVisualStyleBackColor = false;
+            this.viewAllButton.Click += new System.EventHandler(this.viewAllButton_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -131,6 +115,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "studentVirtualGroups";
             this.Text = "studentVirtualGroups";
+            this.Load += new System.EventHandler(this.studentVirtualGroups_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -145,7 +130,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox searchTextBox;
-        private System.Windows.Forms.Button addBooksButton;
         private System.Windows.Forms.Button viewAllButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }

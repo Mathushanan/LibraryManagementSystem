@@ -319,6 +319,7 @@
             this.Name = "updateLibrarians";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "updateLibrarians";
+            this.Load += new System.EventHandler(this.updateLibrarians_Load);
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();

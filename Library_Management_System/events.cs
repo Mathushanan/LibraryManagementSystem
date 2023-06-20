@@ -162,7 +162,7 @@ namespace Library_Management_System
             deleteButton.ForeColor = Color.White;
             deleteButton.Text = "Delete";
             deleteButton.Location = new System.Drawing.Point(10, 120);
-            deleteButton.Tag = eventId; // Store the ISBN as the button's Tag for identification
+            deleteButton.Tag = eventId; 
             deleteButton.Click += DeleteButton_Click;
             profileCard.Controls.Add(deleteButton);
 
@@ -175,7 +175,7 @@ namespace Library_Management_System
             updateButton.ForeColor = Color.White;
             updateButton.Text = "Update";
             updateButton.Location = new System.Drawing.Point(90, 120);
-            updateButton.Tag = eventId; // Store the ISBN as the button's Tag for identification
+            updateButton.Tag = eventId;
             updateButton.Click += UpdateButton_Click;
             profileCard.Controls.Add(updateButton);
 

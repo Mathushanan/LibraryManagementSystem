@@ -340,15 +340,86 @@ namespace Library_Management_System
             
             Button downloadButton = (Button)sender;
             string isbn = downloadButton.Tag.ToString();
+            byte[] pdfData = null;
+            SqlConnection connection = new SqlConnection(connectionString);
+            string bookName="";
+
+            try
+            {
+                connection.Open();
+                SqlCommand retriveCommand = new SqlCommand("SELECT pdf FROM ebooks WHERE isbn=@isbn", connection);
+                retriveCommand.Parameters.AddWithValue("@isbn", isbn);
+
+                pdfData=(byte[])retriveCommand.ExecuteScalar();
+
+
+                SqlCommand command = new SqlCommand("SELECT title FROM ebooks WHERE isbn=@isbn",connection);
+                command.Parameters.AddWithValue("@isbn", isbn);
+
+                bookName = command.ExecuteScalar().ToString();
+
+              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading book data: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF Files|*.pdf";
+            saveFileDialog.Title = "Download Book";
+            saveFileDialog.FileName = bookName+".pdf";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                
+                File.WriteAllBytes(filePath, pdfData);
+
+                int count = 0;
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT downloadCount FROM ebooks WHERE isbn=@isbn";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@isbn", isbn);
+
+                    count = Convert.ToInt32(command.ExecuteScalar());
+
+                    string query1 = "UPDATE ebooks SET downloadCount=@count WHERE isbn=@isbn";
+                    SqlCommand updateCommand = new SqlCommand(query1, connection);
+                    updateCommand.Parameters.AddWithValue("@count", count+1);
+                    updateCommand.Parameters.AddWithValue("@isbn", isbn);
+
+                    if (Convert.ToInt32(updateCommand.ExecuteNonQuery()) > 0)
+                    {
+                        MessageBox.Show("Book downloaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to download!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
 
 
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connection.Close();
+                }
 
-                flowLayoutPanel1.Controls.Clear();
+            }
+
+            flowLayoutPanel1.Controls.Clear();
                 LoadBookData();
-
-            
-
 
         }
 

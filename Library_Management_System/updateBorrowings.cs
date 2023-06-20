@@ -84,9 +84,10 @@ namespace Library_Management_System
                 try
                 {
                     connection.Open();
-                    SqlCommand updateCommand = new SqlCommand("UPDATE borrowings SET status=@status WHERE borrowingId=@borrowingId",connection);
+                    SqlCommand updateCommand = new SqlCommand("UPDATE borrowings SET status=@status,returnDate=@returnDate WHERE borrowingId=@borrowingId",connection);
                     updateCommand.Parameters.AddWithValue("@status", "Returned");
                     updateCommand.Parameters.AddWithValue("@borrowingId", borrowingId);
+                    updateCommand.Parameters.AddWithValue("@returnDate", dateTimePicker3.Value.ToString());
 
                     if (updateCommand.ExecuteNonQuery() > 0)
                     {

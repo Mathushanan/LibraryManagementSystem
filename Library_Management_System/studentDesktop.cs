@@ -103,7 +103,7 @@ namespace Library_Management_System
             borrowedDetailsButton.BackColor = ColorTranslator.FromHtml("#19589D");
             membersButton.BackColor = ColorTranslator.FromHtml("#19589D");
 
-            studentEvents obj1 = new studentEvents();
+            studentEvents obj1 = new studentEvents(userName);
             openChildForm(obj1, sender);
         }
 
@@ -133,7 +133,7 @@ namespace Library_Management_System
             borrowedDetailsButton.BackColor = ColorTranslator.FromHtml("#39b54a");
             membersButton.BackColor = ColorTranslator.FromHtml("#19589D");
 
-            studentBorrowings obj1 = new studentBorrowings();
+            studentBorrowings obj1 = new studentBorrowings(userName);
             openChildForm(obj1, sender);
         }
 
@@ -148,7 +148,7 @@ namespace Library_Management_System
             borrowedDetailsButton.BackColor = ColorTranslator.FromHtml("#19589D");
             membersButton.BackColor = ColorTranslator.FromHtml("#39b54a");
 
-            studentManageAccount obj1 = new studentManageAccount();
+            studentManageAccount obj1 = new studentManageAccount(userName);
             openChildForm(obj1, sender);
         }
 

@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.newBorrowingButton = new System.Windows.Forms.Button();
             this.pendingButton = new System.Windows.Forms.Button();
             this.viewAllButton = new System.Windows.Forms.Button();
             this.borrowedDetailsDataGrid = new System.Windows.Forms.DataGridView();
@@ -45,7 +44,6 @@
             // 
             this.panel2.Controls.Add(this.searchButton);
             this.panel2.Controls.Add(this.searchTextBox);
-            this.panel2.Controls.Add(this.newBorrowingButton);
             this.panel2.Controls.Add(this.pendingButton);
             this.panel2.Controls.Add(this.viewAllButton);
             this.panel2.Location = new System.Drawing.Point(9, 25);
@@ -79,21 +77,6 @@
             this.searchTextBox.Size = new System.Drawing.Size(281, 37);
             this.searchTextBox.TabIndex = 0;
             // 
-            // newBorrowingButton
-            // 
-            this.newBorrowingButton.AutoSize = true;
-            this.newBorrowingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(196)))), ((int)(((byte)(227)))));
-            this.newBorrowingButton.FlatAppearance.BorderSize = 0;
-            this.newBorrowingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.newBorrowingButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newBorrowingButton.ForeColor = System.Drawing.Color.White;
-            this.newBorrowingButton.Location = new System.Drawing.Point(683, 16);
-            this.newBorrowingButton.Name = "newBorrowingButton";
-            this.newBorrowingButton.Size = new System.Drawing.Size(179, 38);
-            this.newBorrowingButton.TabIndex = 3;
-            this.newBorrowingButton.Text = "New Borrowing";
-            this.newBorrowingButton.UseVisualStyleBackColor = false;
-            // 
             // pendingButton
             // 
             this.pendingButton.AutoSize = true;
@@ -108,6 +91,7 @@
             this.pendingButton.TabIndex = 3;
             this.pendingButton.Text = "Pendings";
             this.pendingButton.UseVisualStyleBackColor = false;
+            this.pendingButton.Click += new System.EventHandler(this.pendingButton_Click);
             // 
             // viewAllButton
             // 
@@ -117,12 +101,13 @@
             this.viewAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewAllButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewAllButton.ForeColor = System.Drawing.Color.White;
-            this.viewAllButton.Location = new System.Drawing.Point(498, 16);
+            this.viewAllButton.Location = new System.Drawing.Point(590, 16);
             this.viewAllButton.Name = "viewAllButton";
             this.viewAllButton.Size = new System.Drawing.Size(179, 38);
             this.viewAllButton.TabIndex = 3;
             this.viewAllButton.Text = "View All";
             this.viewAllButton.UseVisualStyleBackColor = false;
+            this.viewAllButton.Click += new System.EventHandler(this.viewAllButton_Click);
             // 
             // borrowedDetailsDataGrid
             // 
@@ -131,23 +116,23 @@
             this.borrowedDetailsDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.borrowedDetailsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.borrowedDetailsDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.borrowedDetailsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.borrowedDetailsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.borrowedDetailsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.borrowedDetailsDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.borrowedDetailsDataGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.borrowedDetailsDataGrid.Location = new System.Drawing.Point(9, 149);
             this.borrowedDetailsDataGrid.Name = "borrowedDetailsDataGrid";
             this.borrowedDetailsDataGrid.ReadOnly = true;
@@ -167,6 +152,7 @@
             this.Controls.Add(this.borrowedDetailsDataGrid);
             this.Name = "studentBorrowings";
             this.Text = "studentBorrowings";
+            this.Load += new System.EventHandler(this.studentBorrowings_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.borrowedDetailsDataGrid)).EndInit();
@@ -179,7 +165,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox searchTextBox;
-        private System.Windows.Forms.Button newBorrowingButton;
         private System.Windows.Forms.Button pendingButton;
         private System.Windows.Forms.Button viewAllButton;
         private System.Windows.Forms.DataGridView borrowedDetailsDataGrid;

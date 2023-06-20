@@ -81,7 +81,7 @@
             this.viewAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewAllButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewAllButton.ForeColor = System.Drawing.Color.White;
-            this.viewAllButton.Location = new System.Drawing.Point(803, 38);
+            this.viewAllButton.Location = new System.Drawing.Point(744, 38);
             this.viewAllButton.Name = "viewAllButton";
             this.viewAllButton.Size = new System.Drawing.Size(179, 38);
             this.viewAllButton.TabIndex = 3;
