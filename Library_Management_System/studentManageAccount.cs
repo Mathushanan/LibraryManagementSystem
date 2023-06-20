@@ -25,50 +25,62 @@ namespace Library_Management_System
         {
             SqlConnection connection = new SqlConnection(connectionString);
 
-
-            try
+            if (string.IsNullOrWhiteSpace(passwordTextBox.Text) || string.IsNullOrWhiteSpace(confirmTextBox.Text))
             {
-                connection.Open();
-           
-                string password = passwordTextBox.Text;
+                MessageBox.Show("Please fill all the fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (passwordTextBox.Text != confirmTextBox.Text)
+            {
+                MessageBox.Show("Confirm password does not match with password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    connection.Open();
 
-                SqlCommand updateCommand = new SqlCommand("UPDATE users SET  password=@password WHERE userId=@id", connection);
+                    string password = passwordTextBox.Text;
+
+                    SqlCommand updateCommand = new SqlCommand("UPDATE users SET  password=@password WHERE userId=@userid", connection);
+
+                    updateCommand.Parameters.AddWithValue("@userId", userId);
+                    updateCommand.Parameters.AddWithValue("@password", password);
+
+
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+
+                        MessageBox.Show("Password updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to reset the password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
 
             
-                updateCommand.Parameters.AddWithValue("password", password);
-
-
-                int rowsAffected = updateCommand.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
-                {
-
-                    MessageBox.Show("Password updated successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Failed to reset the password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
 
         }
-
+        int userId = 0;
         private void studentManageAccount_Load(object sender, EventArgs e)
         {
-            int userId = 0;
+            
             string name = "";
             string email = "";
 

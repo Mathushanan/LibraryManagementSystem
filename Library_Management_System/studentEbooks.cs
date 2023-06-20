@@ -391,12 +391,31 @@ namespace Library_Management_System
 
                     count = Convert.ToInt32(command.ExecuteScalar());
 
+
+                    string query2 = "SELECT bookId FROM ebooks WHERE isbn=@isbn";
+                    SqlCommand selectCommand = new SqlCommand(query2, connection);
+                    selectCommand.Parameters.AddWithValue("@isbn", isbn);
+
+                    int bookId = Convert.ToInt32(selectCommand.ExecuteScalar());
+
+                    string query3 = "SELECT userId FROM users WHERE email=@userName";
+                    SqlCommand selectCommand1 = new SqlCommand(query3, connection);
+                    selectCommand1.Parameters.AddWithValue("@userName", userName);
+
+                    int userId=Convert.ToInt32(selectCommand1.ExecuteScalar());
+
+                    string query4 = "INSERT INTO downloadcount (userId,ebookId) VALUES (@userId,@bookId)";
+                    SqlCommand insertCommand = new SqlCommand(query4, connection);
+                    insertCommand.Parameters.AddWithValue("@userId", userId);
+                    insertCommand.Parameters.AddWithValue("@bookId",bookId);
+
                     string query1 = "UPDATE ebooks SET downloadCount=@count WHERE isbn=@isbn";
                     SqlCommand updateCommand = new SqlCommand(query1, connection);
                     updateCommand.Parameters.AddWithValue("@count", count+1);
                     updateCommand.Parameters.AddWithValue("@isbn", isbn);
 
-                    if (Convert.ToInt32(updateCommand.ExecuteNonQuery()) > 0)
+
+                    if (Convert.ToInt32(updateCommand.ExecuteNonQuery()) > 0 && Convert.ToInt32(insertCommand.ExecuteNonQuery())>0)
                     {
                         MessageBox.Show("Book downloaded successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

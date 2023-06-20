@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MySqlX.XDevAPI.Relational;
+using System.Data.Common;
 
 namespace Library_Management_System
 {
@@ -40,10 +42,23 @@ namespace Library_Management_System
                     DataTable dataTable = new DataTable();
 
                     adapter.Fill(dataTable);
+
+                    dataTable.Columns["userId"].ColumnName = "User ID";
+                    dataTable.Columns["name"].ColumnName = "Name";
+                    dataTable.Columns["email"].ColumnName = "User Name";
+                    dataTable.Columns["password"].ColumnName = "Password";
+                    dataTable.Columns["userType"].ColumnName = "User Type";
+
+                        
+
                     librariansDataGrid.DataSource = dataTable;
                     librariansDataGrid.DefaultCellStyle = new DataGridViewCellStyle();
 
-                  
+                    foreach (DataGridViewColumn column in librariansDataGrid.Columns)
+                    {
+                        column.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
+                    }
+
                     librariansDataGrid.AllowUserToAddRows = false;
 
                     DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
@@ -51,6 +66,7 @@ namespace Library_Management_System
                     deleteButtonColumn.Text = "Delete";
                     deleteButtonColumn.HeaderText = "Delete";
                     deleteButtonColumn.UseColumnTextForButtonValue = true;
+                    deleteButtonColumn.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
                     librariansDataGrid.Columns.Add(deleteButtonColumn);
 
                     deleteButtonColumn.DefaultCellStyle.BackColor = Color.Red;
@@ -63,6 +79,7 @@ namespace Library_Management_System
                     updateButtonColumn.Name = "Update";
                     updateButtonColumn.Text = "Update";
                     updateButtonColumn.UseColumnTextForButtonValue = true;
+                    updateButtonColumn.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
                     librariansDataGrid.Columns.Add(updateButtonColumn);
 
                     updateButtonColumn.DefaultCellStyle.BackColor = Color.Green;

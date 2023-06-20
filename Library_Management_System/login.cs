@@ -160,6 +160,17 @@ namespace Library_Management_System
         {
             MessageBox.Show("Please contact the librarian to reset your password.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+            
+          
+        }
     }
 
 }

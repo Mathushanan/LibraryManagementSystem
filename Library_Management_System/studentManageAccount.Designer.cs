@@ -33,6 +33,9 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.updateButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.confirmTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,16 +48,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -76,7 +76,7 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(156, 198);
+            this.panel1.Location = new System.Drawing.Point(158, 150);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(762, 356);
             this.panel1.TabIndex = 16;
@@ -121,6 +121,36 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.confirmTextBox);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Location = new System.Drawing.Point(96, 203);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(567, 39);
+            this.panel7.TabIndex = 9;
+            // 
+            // confirmTextBox
+            // 
+            this.confirmTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.confirmTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
+            this.confirmTextBox.Location = new System.Drawing.Point(216, 3);
+            this.confirmTextBox.Name = "confirmTextBox";
+            this.confirmTextBox.Size = new System.Drawing.Size(325, 25);
+            this.confirmTextBox.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
+            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(185, 23);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Confirm password";
             // 
             // panel5
             // 
@@ -245,36 +275,6 @@
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "Name";
             // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.textBox1);
-            this.panel7.Controls.Add(this.label1);
-            this.panel7.Location = new System.Drawing.Point(96, 203);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(567, 39);
-            this.panel7.TabIndex = 9;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
-            this.textBox1.Location = new System.Drawing.Point(216, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(325, 25);
-            this.textBox1.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
-            this.label1.Location = new System.Drawing.Point(3, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 23);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Confirm password";
-            // 
             // studentManageAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -288,6 +288,8 @@
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -296,8 +298,6 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,7 +323,7 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox confirmTextBox;
         private System.Windows.Forms.Label label1;
     }
 }

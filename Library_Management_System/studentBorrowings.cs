@@ -148,8 +148,19 @@ namespace Library_Management_System
                 dataTable.Columns.Remove("userId");
                 dataTable.Columns.Remove("name");
 
+                dataTable.Columns["borrowingId"].ColumnName = "Borrowing ID";
+                dataTable.Columns["borrowDate"].ColumnName = "Borrow Date";
+                dataTable.Columns["returnDate"].ColumnName = "Return Date";
+                dataTable.Columns["status"].ColumnName = "Status";
+                dataTable.Columns["isbn"].ColumnName = "ISBN";
+               
+
                 borrowedDetailsDataGrid.DataSource = dataTable;
 
+                foreach (DataGridViewColumn column in borrowedDetailsDataGrid.Columns)
+                {
+                    column.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
+                }
 
                 borrowedDetailsDataGrid.DefaultCellStyle = new DataGridViewCellStyle();
                 borrowedDetailsDataGrid.AllowUserToAddRows = false;

@@ -33,8 +33,22 @@ namespace Library_Management_System
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
-                borrowedDetailsDataGrid.DataSource = dataTable;
 
+                dataTable.Columns["userId"].ColumnName = "User ID";
+                dataTable.Columns["name"].ColumnName = "Name";
+                dataTable.Columns["status"].ColumnName = "Status";
+                dataTable.Columns["borrowingId"].ColumnName = "Borrowing ID";
+                dataTable.Columns["isbn"].ColumnName = "ISBN";
+                dataTable.Columns["borrowDate"].ColumnName = "Borrow Date";
+                dataTable.Columns["returnDate"].ColumnName = "Return Date";
+
+               
+
+                borrowedDetailsDataGrid.DataSource = dataTable;
+                foreach (DataGridViewColumn column in borrowedDetailsDataGrid.Columns)
+                {
+                    column.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
+                }
 
                 borrowedDetailsDataGrid.DefaultCellStyle = new DataGridViewCellStyle();
 
@@ -43,6 +57,7 @@ namespace Library_Management_System
                 deleteButtonColumn.Text = "Delete";
                 deleteButtonColumn.HeaderText = "Delete";
                 deleteButtonColumn.UseColumnTextForButtonValue = true;
+                deleteButtonColumn.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
                 borrowedDetailsDataGrid.Columns.Add(deleteButtonColumn);
 
                 deleteButtonColumn.DefaultCellStyle.BackColor = Color.Red;
@@ -55,6 +70,7 @@ namespace Library_Management_System
                 updateButtonColumn.Name = "Update";
                 updateButtonColumn.Text = "Update";
                 updateButtonColumn.UseColumnTextForButtonValue = true;
+                updateButtonColumn.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
                 borrowedDetailsDataGrid.Columns.Add(updateButtonColumn);
 
                 updateButtonColumn.DefaultCellStyle.BackColor = Color.Green;
