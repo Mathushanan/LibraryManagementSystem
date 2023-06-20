@@ -88,7 +88,7 @@ namespace Library_Management_System
             borrowedDetailsButton.BackColor = ColorTranslator.FromHtml("#19589D");
             membersButton.BackColor = ColorTranslator.FromHtml("#19589D");
 
-            studentEbooks obj1 = new studentEbooks();
+            studentEbooks obj1 = new studentEbooks(userName);
             openChildForm(obj1, sender);
         }
 

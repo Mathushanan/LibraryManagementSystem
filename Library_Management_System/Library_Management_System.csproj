@@ -140,6 +140,12 @@
     <Compile Include="borrowedDetails.Designer.cs">
       <DependentUpon>borrowedDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="eBookRating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eBookRating.Designer.cs">
+      <DependentUpon>eBookRating.cs</DependentUpon>
+    </Compile>
     <Compile Include="eBooks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="borrowedDetails.resx">
       <DependentUpon>borrowedDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eBookRating.resx">
+      <DependentUpon>eBookRating.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="eBooks.resx">
       <DependentUpon>eBooks.cs</DependentUpon>

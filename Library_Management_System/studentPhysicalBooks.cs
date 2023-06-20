@@ -67,18 +67,24 @@ namespace Library_Management_System
 
         private int getRating(int bookId)
         {
-            int rating = 0;
+            int totalRating = 0;
+            int totalCount = 0;
+
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                string query = "SELECT rating FROM physicalbooks_ratings WHERE bookId=@bookId";
-                SqlCommand ratingCommand = new SqlCommand(query, connection);
-                ratingCommand.Parameters.AddWithValue("@bookId", bookId);
-                object result = ratingCommand.ExecuteScalar();
+                string query1 = "SELECT SUM(rating) FROM physicalbooks_ratings WHERE bookId=@bookId";
+                SqlCommand sumCommand = new SqlCommand(query1, connection);
+                sumCommand.Parameters.AddWithValue("@bookId", bookId);
+                object result1 = sumCommand.ExecuteScalar();
+                totalRating = Convert.ToInt32(result1);
 
-                rating = Convert.ToInt32(result);
-
+                string query2 = "SELECT COUNT(rating) FROM physicalbooks_ratings WHERE bookId=@bookId";
+                SqlCommand countCommand = new SqlCommand(query2, connection);
+                countCommand.Parameters.AddWithValue("@bookId", bookId);
+                object result2 = countCommand.ExecuteScalar();
+                totalCount = Convert.ToInt32(result2);
 
 
             }
@@ -90,7 +96,7 @@ namespace Library_Management_System
             {
                 connection.Close();
             }
-            return rating;
+            return totalRating / totalCount;
         }
 
         private void CreateProfileCard(string title, string isbn, string author, string publicationYear, string category, Byte[] imageData, int rating)
@@ -198,7 +204,7 @@ namespace Library_Management_System
             borrowButton.ForeColor = Color.White;
             borrowButton.Text = "Borrow";
             borrowButton.Location = new System.Drawing.Point(10, 120);
-            borrowButton.Tag = isbn; // Store the ISBN as the button's Tag for identification
+            borrowButton.Tag = isbn; 
             borrowButton.Click += BorrowButton_Click;
             profileCard.Controls.Add(borrowButton);
 
@@ -211,7 +217,7 @@ namespace Library_Management_System
             rateButton.ForeColor = Color.White;
             rateButton.Text = "Rate";
             rateButton.Location = new System.Drawing.Point(90, 120);
-            rateButton.Tag = isbn; // Store the ISBN as the button's Tag for identification
+            rateButton.Tag = isbn; 
             rateButton.Click += RateButton_Click;
             profileCard.Controls.Add(rateButton);
 
@@ -231,12 +237,10 @@ namespace Library_Management_System
             int starSize = 20;
             int starSpacing = 4;
             int starsTotalWidth = maxRating * starSize + (maxRating - 1) * starSpacing;
-
-            // Calculate the starting position to center the stars horizontally under the PictureBox
             int starsStartX = pictureBox.Left + (pictureBox.Width - starsTotalWidth) / 2;
-            int starsY = pictureBox.Bottom + 10; // Adjust the vertical position of the stars
+            int starsY = pictureBox.Bottom + 10; 
 
-            // Create and configure the rating PictureBox controls
+            
             for (int i = 0; i < maxRating; i++)
             {
                 ratingPictureBoxes[i] = new PictureBox();
@@ -244,18 +248,18 @@ namespace Library_Management_System
                 ratingPictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
                 ratingPictureBoxes[i].Location = new Point(starsStartX + (starSize + starSpacing) * i, starsY);
 
-                // Set the image for the visible PictureBoxes (e.g., filled star icon) if it's within the rating
+                
                 if (i < rating)
                 {
                     ratingPictureBoxes[i].Image = Resources.filled_star;
                 }
                 else
                 {
-                    // Set the image for the hidden PictureBoxes (e.g., empty star icon)
+                    
                     ratingPictureBoxes[i].Image = Resources.blank_star;
                 }
 
-                // Add the PictureBox to the profileCard panel
+            
                 profileCard.Controls.Add(ratingPictureBoxes[i]);
             }
 
