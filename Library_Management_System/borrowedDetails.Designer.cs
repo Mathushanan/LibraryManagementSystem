@@ -87,7 +87,7 @@
             this.newBorrowingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newBorrowingButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newBorrowingButton.ForeColor = System.Drawing.Color.White;
-            this.newBorrowingButton.Location = new System.Drawing.Point(683, 16);
+            this.newBorrowingButton.Location = new System.Drawing.Point(868, 16);
             this.newBorrowingButton.Name = "newBorrowingButton";
             this.newBorrowingButton.Size = new System.Drawing.Size(179, 38);
             this.newBorrowingButton.TabIndex = 3;
@@ -103,7 +103,7 @@
             this.pendingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pendingButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pendingButton.ForeColor = System.Drawing.Color.White;
-            this.pendingButton.Location = new System.Drawing.Point(868, 16);
+            this.pendingButton.Location = new System.Drawing.Point(683, 16);
             this.pendingButton.Name = "pendingButton";
             this.pendingButton.Size = new System.Drawing.Size(179, 38);
             this.pendingButton.TabIndex = 3;

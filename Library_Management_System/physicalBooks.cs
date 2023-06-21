@@ -16,7 +16,7 @@ namespace Library_Management_System
 {
     public partial class physicalBooks : Form
     {
-        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
+        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public physicalBooks()
         {
             InitializeComponent();
@@ -46,22 +46,32 @@ namespace Library_Management_System
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
-                flowLayoutPanel1.Controls.Clear();
-
-                foreach (DataRow row in dataTable.Rows)
+                if (dataTable == null)
                 {
-                    string title = row["title"].ToString();
-                    string isbn = row["isbn"].ToString();
-                    string author = row["author"].ToString();
-                    string publicationYear = row["publicationYear"].ToString();
-                    string category = row["category"].ToString();
-                    int bookId = Convert.ToInt32(row["bookId"]);
-                    byte[] imageData = (byte[])row["image"];
-
-                    int rating = getRating(bookId);
-
-                    CreateProfileCard(title, isbn, author, publicationYear, category, imageData, rating);
+                    MessageBox.Show("Physical books are not available.: ","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
+                else
+                {
+                    flowLayoutPanel1.Controls.Clear();
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        string title = row["title"].ToString();
+                        string isbn = row["isbn"].ToString();
+                        string author = row["author"].ToString();
+                        string publicationYear = row["publicationYear"].ToString();
+                        string category = row["category"].ToString();
+                        int bookId = Convert.ToInt32(row["bookId"]);
+                        byte[] imageData = (byte[])row["image"];
+
+                        int rating = getRating(bookId);
+
+                        CreateProfileCard(title, isbn, author, publicationYear, category, imageData, rating);
+                    }
+                }
+
+
+                
             }
             catch (Exception ex)
             {
@@ -73,7 +83,7 @@ namespace Library_Management_System
         private int getRating(int bookId)
         {
             int totalRating = 0;
-            int totalCount = 0;
+            int totalCount = 1;
 
             SqlConnection connection = new SqlConnection(connectionString);
             try
@@ -83,13 +93,30 @@ namespace Library_Management_System
                 SqlCommand sumCommand = new SqlCommand(query1, connection);
                 sumCommand.Parameters.AddWithValue("@bookId", bookId);
                 object result1 = sumCommand.ExecuteScalar();
-                totalRating = Convert.ToInt32(result1);
+
+                if (result1 != DBNull.Value && result1 != null)
+                {
+                    totalRating = Convert.ToInt32(result1);
+                }
+                
+                
 
                 string query2 = "SELECT COUNT(rating) FROM physicalbooks_ratings WHERE bookId=@bookId";
                 SqlCommand countCommand = new SqlCommand(query2, connection);
                 countCommand.Parameters.AddWithValue("@bookId", bookId);
                 object result2 = countCommand.ExecuteScalar();
-                totalCount = Convert.ToInt32(result2);
+
+                if (result2 != DBNull.Value && result2 != null)
+                {
+                    totalCount = Convert.ToInt32(result2);
+                }
+                else if(result2 == DBNull.Value)
+                {
+                    totalCount = 1;
+                }
+                
+
+                
 
 
             }
@@ -101,7 +128,9 @@ namespace Library_Management_System
             {
                 connection.Close();
             }
-            return totalRating / totalCount;
+
+            double averageRating = (double)totalRating / totalCount;
+            return (int)averageRating;
         }
 
         private void CreateProfileCard(string title, string isbn, string author, string publicationYear, string category, Byte[] imageData, int rating)

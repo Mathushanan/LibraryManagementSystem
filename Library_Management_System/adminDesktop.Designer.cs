@@ -39,15 +39,15 @@
             this.menuHeaderPanel = new System.Windows.Forms.Panel();
             this.titleLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.desktopPanel = new System.Windows.Forms.Panel();
             this.welcomeLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuHeaderPanel.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.desktopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.desktopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButton
@@ -89,6 +89,7 @@
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(408, 800);
             this.menuPanel.TabIndex = 2;
+            this.menuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.menuPanel_Paint);
             // 
             // panel2
             // 
@@ -195,6 +196,16 @@
             this.panel1.Size = new System.Drawing.Size(1092, 100);
             this.panel1.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Library_Management_System.Properties.Resources.nsbm;
+            this.pictureBox1.Location = new System.Drawing.Point(471, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(213, 88);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // desktopPanel
             // 
             this.desktopPanel.Controls.Add(this.welcomeLabel);
@@ -216,16 +227,6 @@
             this.welcomeLabel.TabIndex = 0;
             this.welcomeLabel.Text = "Welcome!";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Library_Management_System.Properties.Resources.nsbm;
-            this.pictureBox1.Location = new System.Drawing.Point(471, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(213, 88);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // adminDesktop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -243,9 +244,9 @@
             this.panel2.ResumeLayout(false);
             this.menuHeaderPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.desktopPanel.ResumeLayout(false);
             this.desktopPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

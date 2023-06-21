@@ -96,31 +96,31 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(57, 411);
+            this.label2.Location = new System.Drawing.Point(84, 459);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(299, 34);
+            this.label2.Size = new System.Drawing.Size(245, 32);
             this.label2.TabIndex = 1;
-            this.label2.Text = "To the NSBM\'S Library";
+            this.label2.Text = "To NSBM Library";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.LightGray;
-            this.label1.Location = new System.Drawing.Point(138, 361);
+            this.label1.Location = new System.Drawing.Point(84, 400);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 34);
+            this.label1.Size = new System.Drawing.Size(150, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome!";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Library_Management_System.Properties.Resources._969265_cogwheels_seo_setting_configuration_gear_icon__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(132, 71);
+            this.pictureBox1.Location = new System.Drawing.Point(79, 68);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox1.Size = new System.Drawing.Size(250, 250);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -143,13 +143,13 @@
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
-            this.titleLabel.Location = new System.Drawing.Point(406, 216);
+            this.titleLabel.Location = new System.Drawing.Point(118, 189);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(319, 34);
+            this.titleLabel.Size = new System.Drawing.Size(816, 32);
             this.titleLabel.TabIndex = 12;
-            this.titleLabel.Text = "Login to your account!";
+            this.titleLabel.Text = "Enter a world of possibilities with your NSBM Library login!";
             // 
             // minimizeButton
             // 
@@ -179,7 +179,7 @@
             // 
             this.loginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(181)))), ((int)(((byte)(74)))));
             this.loginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginButton.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginButton.ForeColor = System.Drawing.Color.White;
             this.loginButton.Location = new System.Drawing.Point(3, 3);
             this.loginButton.Name = "loginButton";
@@ -194,7 +194,7 @@
             this.forgotButton.BackColor = System.Drawing.SystemColors.Control;
             this.forgotButton.FlatAppearance.BorderSize = 0;
             this.forgotButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.forgotButton.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgotButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forgotButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
             this.forgotButton.Location = new System.Drawing.Point(348, 3);
             this.forgotButton.Name = "forgotButton";
@@ -219,33 +219,33 @@
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
             this.passwordLabel.Location = new System.Drawing.Point(17, 82);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(100, 23);
+            this.passwordLabel.Size = new System.Drawing.Size(107, 23);
             this.passwordLabel.TabIndex = 6;
             this.passwordLabel.Text = "Password";
             // 
             // userNameLabel
             // 
             this.userNameLabel.AutoSize = true;
-            this.userNameLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
             this.userNameLabel.Location = new System.Drawing.Point(17, 22);
             this.userNameLabel.Name = "userNameLabel";
-            this.userNameLabel.Size = new System.Drawing.Size(114, 23);
+            this.userNameLabel.Size = new System.Drawing.Size(116, 23);
             this.userNameLabel.TabIndex = 6;
             this.userNameLabel.Text = "User name";
             // 
             // usernameTextBox
             // 
             this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.usernameTextBox.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTextBox.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(88)))), ((int)(((byte)(157)))));
             this.usernameTextBox.Location = new System.Drawing.Point(152, 13);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(445, 34);
+            this.usernameTextBox.Size = new System.Drawing.Size(445, 32);
             this.usernameTextBox.TabIndex = 1;
             this.usernameTextBox.MouseEnter += new System.EventHandler(this.usernameTextBox_MouseEnter);
             this.usernameTextBox.MouseLeave += new System.EventHandler(this.usernameTextBox_MouseLeave);

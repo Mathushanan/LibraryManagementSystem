@@ -16,7 +16,7 @@ namespace Library_Management_System
 {
     public partial class studentEbooks : Form
     {
-        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
+        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         string userName="";
         public studentEbooks(string userName)
         {
@@ -113,7 +113,7 @@ namespace Library_Management_System
         private int getRating(int bookId)
         {
             int totalRating = 0;
-            int totalCount = 0;
+            int totalCount = 1;
 
             SqlConnection connection = new SqlConnection(connectionString);
             try
@@ -123,13 +123,26 @@ namespace Library_Management_System
                 SqlCommand sumCommand = new SqlCommand(query1, connection);
                 sumCommand.Parameters.AddWithValue("@bookId", bookId);
                 object result1 = sumCommand.ExecuteScalar();
-                totalRating = Convert.ToInt32(result1);
+
+                if (result1 != DBNull.Value)
+                {
+                    totalRating = Convert.ToInt32(result1);
+                }
+
 
                 string query2 = "SELECT COUNT(rating) FROM ebooks_ratings WHERE bookId=@bookId";
                 SqlCommand countCommand = new SqlCommand(query2, connection);
                 countCommand.Parameters.AddWithValue("@bookId", bookId);
                 object result2 = countCommand.ExecuteScalar();
-                totalCount = Convert.ToInt32(result2);
+
+                if (result2 != DBNull.Value)
+                {
+                    totalCount = Convert.ToInt32(result2);
+                }
+                else if (result2 == DBNull.Value)
+                {
+                    totalCount = 1;
+                }
 
 
             }
@@ -141,7 +154,10 @@ namespace Library_Management_System
             {
                 connection.Close();
             }
-            return totalRating / totalCount;
+
+
+            double averageRating = (double)totalRating / totalCount;
+            return (int)averageRating;
         }
 
         private void CreateProfileCard(string title, string isbn, string author, string publicationYear, string category, Byte[] imageData, int rating, int downloadCount)

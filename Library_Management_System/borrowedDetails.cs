@@ -14,13 +14,18 @@ namespace Library_Management_System
     public partial class borrowedDetails : Form
     {
 
-        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public borrowedDetails()
         {
             InitializeComponent();
         }
 
         private void borrowedDetails_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
         {
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -42,7 +47,7 @@ namespace Library_Management_System
                 dataTable.Columns["borrowDate"].ColumnName = "Borrow Date";
                 dataTable.Columns["returnDate"].ColumnName = "Return Date";
 
-               
+
 
                 borrowedDetailsDataGrid.DataSource = dataTable;
                 foreach (DataGridViewColumn column in borrowedDetailsDataGrid.Columns)
@@ -57,6 +62,7 @@ namespace Library_Management_System
                 deleteButtonColumn.Text = "Delete";
                 deleteButtonColumn.HeaderText = "Delete";
                 deleteButtonColumn.UseColumnTextForButtonValue = true;
+
                 deleteButtonColumn.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
                 borrowedDetailsDataGrid.Columns.Add(deleteButtonColumn);
 
@@ -70,6 +76,7 @@ namespace Library_Management_System
                 updateButtonColumn.Name = "Update";
                 updateButtonColumn.Text = "Update";
                 updateButtonColumn.UseColumnTextForButtonValue = true;
+
                 updateButtonColumn.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold);
                 borrowedDetailsDataGrid.Columns.Add(updateButtonColumn);
 
@@ -80,7 +87,7 @@ namespace Library_Management_System
                 updateButtonColumn.DefaultCellStyle.SelectionBackColor = Color.Green;
 
                 borrowedDetailsDataGrid.AllowUserToAddRows = false;
-               
+
             }
             catch (Exception ex)
             {
@@ -113,6 +120,15 @@ namespace Library_Management_System
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
+
+                dataTable.Columns["userId"].ColumnName = "User ID";
+                dataTable.Columns["name"].ColumnName = "Name";
+                dataTable.Columns["status"].ColumnName = "Status";
+                dataTable.Columns["borrowingId"].ColumnName = "Borrowing ID";
+                dataTable.Columns["isbn"].ColumnName = "ISBN";
+                dataTable.Columns["borrowDate"].ColumnName = "Borrow Date";
+                dataTable.Columns["returnDate"].ColumnName = "Return Date";
+
                 borrowedDetailsDataGrid.DataSource = dataTable;
             }
             catch (Exception ex)
@@ -127,29 +143,10 @@ namespace Library_Management_System
 
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            try
-            {
-                connection.Open();
-                string query = "SELECT * FROM borrowings";
-
-                SqlCommand cmd = new SqlCommand(query, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dataTable = new DataTable();
-
-                adapter.Fill(dataTable);
-                borrowedDetailsDataGrid.DataSource = dataTable;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            borrowedDetailsDataGrid.DataSource = null;
+            borrowedDetailsDataGrid.Rows.Clear();
+            borrowedDetailsDataGrid.Columns.Clear();
+            LoadData();
         }
 
         private void newBorrowingButton_Click(object sender, EventArgs e)
@@ -172,7 +169,17 @@ namespace Library_Management_System
                 cmd.Parameters.AddWithValue("@status", "Pending");
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
+
                 adapter.Fill(dataTable);
+
+                dataTable.Columns["userId"].ColumnName = "User ID";
+                dataTable.Columns["name"].ColumnName = "Name";
+                dataTable.Columns["status"].ColumnName = "Status";
+                dataTable.Columns["borrowingId"].ColumnName = "Borrowing ID";
+                dataTable.Columns["isbn"].ColumnName = "ISBN";
+                dataTable.Columns["borrowDate"].ColumnName = "Borrow Date";
+                dataTable.Columns["returnDate"].ColumnName = "Return Date";
+
                 borrowedDetailsDataGrid.DataSource = dataTable;
                 
 
@@ -235,10 +242,7 @@ namespace Library_Management_System
                                 {
                                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
-
-
-
-                                
+   
                             }
                             else
                             {
@@ -258,13 +262,14 @@ namespace Library_Management_System
 
                 else if (e.ColumnIndex == borrowedDetailsDataGrid.Columns["Update"].Index)
                 {
-                    string borrowingId = row.Cells["borrowingId"].Value.ToString();
-                    string userId = row.Cells["userId"].Value.ToString();
-                    string name = row.Cells["name"].Value.ToString();
-                    string isbn = row.Cells["isbn"].Value.ToString();
-                    string borrowDate = row.Cells["borrowDate"].Value.ToString();
-                    string returnDate = row.Cells["returnDate"].Value.ToString();
-                    string status = row.Cells["status"].Value.ToString();
+                    string borrowingId = row.Cells["Borrowing ID"].Value.ToString();
+                    string userId = row.Cells["User ID"].Value.ToString();
+                    string name = row.Cells["Name"].Value.ToString();
+                    string isbn = row.Cells["ISBN"].Value.ToString();
+                    string borrowDate = row.Cells["Borrow Date"].Value.ToString();
+                    string returnDate = row.Cells["Borrow Date"].Value.ToString();
+                    string status = row.Cells["Status"].Value.ToString();
+
 
                     updateBorrowings obj1 = new updateBorrowings(borrowingId,userId, name, isbn, borrowDate,returnDate,status);
                     obj1.Show();
@@ -275,26 +280,11 @@ namespace Library_Management_System
         }
         private void UpdateFormClosed(object sender, FormClosedEventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            borrowedDetailsDataGrid.DataSource = null;
+            borrowedDetailsDataGrid.Rows.Clear();
+            borrowedDetailsDataGrid.Columns.Clear();
 
-            try
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand("SELECT * FROM borrowings", connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable dataTable = new DataTable();
-
-                adapter.Fill(dataTable);
-                borrowedDetailsDataGrid.DataSource = dataTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            LoadData();
         }
     }
 }

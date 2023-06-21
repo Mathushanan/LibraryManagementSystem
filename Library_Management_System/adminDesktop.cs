@@ -101,5 +101,10 @@ namespace Library_Management_System
             this.Close();
             obj1.Show();
         }
+
+        private void menuPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

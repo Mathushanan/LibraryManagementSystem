@@ -13,7 +13,7 @@ namespace Library_Management_System
 {
     public partial class studentBorrowings : Form
     {
-        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
+        string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         string userName = "";
         int userId = 0;
         public studentBorrowings(string userName)
@@ -44,6 +44,16 @@ namespace Library_Management_System
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
+
+                dataTable.Columns.Remove("userId");
+                dataTable.Columns.Remove("name");
+
+                dataTable.Columns["borrowingId"].ColumnName = "Borrowing ID";
+                dataTable.Columns["borrowDate"].ColumnName = "Borrow Date";
+                dataTable.Columns["returnDate"].ColumnName = "Return Date";
+                dataTable.Columns["status"].ColumnName = "Status";
+                dataTable.Columns["isbn"].ColumnName = "ISBN";
+
                 borrowedDetailsDataGrid.DataSource = dataTable;
             }
             catch (Exception ex)
@@ -58,30 +68,11 @@ namespace Library_Management_System
 
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            borrowedDetailsDataGrid.DataSource = null;
+            borrowedDetailsDataGrid.Rows.Clear();
+            borrowedDetailsDataGrid.Columns.Clear();
 
-            try
-            {
-                connection.Open();
-                string query = "SELECT * FROM borrowings WHERE userId=@userId";
-
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@userId", userId);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dataTable = new DataTable();
-
-                adapter.Fill(dataTable);
-                borrowedDetailsDataGrid.DataSource = dataTable;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            LoadData();
         }
 
         private void pendingButton_Click(object sender, EventArgs e)
@@ -99,6 +90,16 @@ namespace Library_Management_System
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
+
+                dataTable.Columns.Remove("userId");
+                dataTable.Columns.Remove("name");
+
+                dataTable.Columns["borrowingId"].ColumnName = "Borrowing ID";
+                dataTable.Columns["borrowDate"].ColumnName = "Borrow Date";
+                dataTable.Columns["returnDate"].ColumnName = "Return Date";
+                dataTable.Columns["status"].ColumnName = "Status";
+                dataTable.Columns["isbn"].ColumnName = "ISBN";
+
                 borrowedDetailsDataGrid.DataSource = dataTable;
 
 
@@ -115,6 +116,11 @@ namespace Library_Management_System
 
         private void studentBorrowings_Load(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             SqlConnection connection = new SqlConnection(connectionString);
 
 
@@ -126,7 +132,8 @@ namespace Library_Management_System
                 command.Parameters.AddWithValue("@userName", userName);
 
                 userId = Convert.ToInt32(command.ExecuteScalar());
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -153,7 +160,7 @@ namespace Library_Management_System
                 dataTable.Columns["returnDate"].ColumnName = "Return Date";
                 dataTable.Columns["status"].ColumnName = "Status";
                 dataTable.Columns["isbn"].ColumnName = "ISBN";
-               
+
 
                 borrowedDetailsDataGrid.DataSource = dataTable;
 

@@ -38,26 +38,24 @@ namespace Library_Management_System
 
         private void usernameTextBox_MouseEnter(object sender, EventArgs e)
         {
-            usernameTextBox.BorderStyle = BorderStyle.FixedSingle;
-            passwordTextBox.BorderStyle = BorderStyle.None;
+          
         }
 
         private void usernameTextBox_MouseLeave(object sender, EventArgs e)
         {
-            usernameTextBox.BorderStyle = BorderStyle.None;
+            
             
         }
 
         private void passwordTextbox_MouseEnter(object sender, EventArgs e)
         {
-            usernameTextBox.BorderStyle = BorderStyle.None;
-            passwordTextBox.BorderStyle = BorderStyle.FixedSingle;
+            
         }
 
         private void passwordTextbox_MouseLeave(object sender, EventArgs e)
         {
             
-            passwordTextBox.BorderStyle = BorderStyle.None;
+           
         }
         
         private void openStudentDashBoard()
@@ -117,7 +115,7 @@ namespace Library_Management_System
         private string validateUser(string userName,string password)
         {
             
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
             SqlConnection connection = new SqlConnection(connectionString);
             int count = 0;
             try

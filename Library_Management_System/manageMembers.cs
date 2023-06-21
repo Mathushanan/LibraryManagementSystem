@@ -13,13 +13,18 @@ namespace Library_Management_System
 {
     public partial class manageMembers : Form
     {
-        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Mathu\\OneDrive\\Desktop\\Project\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
+        private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         public manageMembers()
         {
             InitializeComponent();
         }
 
         private void manageMembers_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
         {
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -41,7 +46,7 @@ namespace Library_Management_System
                 dataTable.Columns["userType"].ColumnName = "User Type";
 
 
-                
+
 
                 librariansDataGrid.DataSource = dataTable;
                 foreach (DataGridViewColumn column in librariansDataGrid.Columns)
@@ -52,7 +57,7 @@ namespace Library_Management_System
                 librariansDataGrid.DefaultCellStyle = new DataGridViewCellStyle();
 
                 librariansDataGrid.AllowUserToAddRows = false;
-               
+
 
 
                 DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
@@ -91,7 +96,6 @@ namespace Library_Management_System
                 connection.Close();
             }
         }
-
         private void addMemberButton_Click(object sender, EventArgs e)
         {
             addMember obj1 = new addMember();
@@ -101,27 +105,12 @@ namespace Library_Management_System
         }
         private void UpdateFormClosed(object sender, FormClosedEventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
 
-            try
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand("SELECT * FROM users WHERE userType=@userType", connection);
-                command.Parameters.AddWithValue("@userType", "student");
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable dataTable = new DataTable();
+            librariansDataGrid.DataSource = null;
+            librariansDataGrid.Rows.Clear();
+            librariansDataGrid.Columns.Clear();
 
-                adapter.Fill(dataTable);
-                librariansDataGrid.DataSource = dataTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            LoadData();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -146,6 +135,13 @@ namespace Library_Management_System
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
+
+                dataTable.Columns["userId"].ColumnName = "User ID";
+                dataTable.Columns["name"].ColumnName = "Name";
+                dataTable.Columns["email"].ColumnName = "User Name";
+                dataTable.Columns["password"].ColumnName = "Password";
+                dataTable.Columns["userType"].ColumnName = "User Type";
+
                 librariansDataGrid.DataSource = dataTable;
             }
             catch (Exception ex)
@@ -160,31 +156,11 @@ namespace Library_Management_System
 
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            librariansDataGrid.DataSource = null;
+            librariansDataGrid.Rows.Clear();
+            librariansDataGrid.Columns.Clear();
 
-            try
-            {
-                connection.Open();
-                string query = "SELECT * FROM users WHERE userType=@student";
-                
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@student", "student");
-
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dataTable = new DataTable();
-
-                adapter.Fill(dataTable);
-                librariansDataGrid.DataSource = dataTable;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            LoadData();
         }
 
         private void librariansDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)

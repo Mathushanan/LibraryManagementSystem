@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Library_Management_System.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Library_Management_System.exe" version="1.0.0.8" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Library_Management_System" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Library_Management_System.exe" size="485832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Library_Management_System.exe" size="486856">
       <assemblyIdentity name="Library_Management_System" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8/MXpQNH2PK93X1NCFSQgSYII6Ebv3SEZ9GExcMVE/g=</dsig:DigestValue>
+        <dsig:DigestValue>oKEiGo1d9DFRj5BPIOD5FzXTkNGEfa59pXkFNqB/HiY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -80,7 +80,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>tCpn8lmk273KZN8DoXVHIDRRGD4nkGtJWlNe4wVt3J0=</dsig:DigestValue>
+      <dsig:DigestValue>5CzLzD8BfWUE3H3NQzoDVOAacmA2qbfTFVTznS64WQI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LibraryManagementSystem_log.ldf" size="8388608" writeableType="applicationData">
@@ -89,7 +89,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Hhet+5oLN3zEvezOVPaf6fVEOGeJN5u+42Fv7346kao=</dsig:DigestValue>
+      <dsig:DigestValue>O1s1JuWA/jj1KTJ/Sh9gTWR/8aCRn8LKIAe88X2PzVs=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\61zk7g3q18l.jpg" size="64689">
