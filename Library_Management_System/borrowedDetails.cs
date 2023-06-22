@@ -206,9 +206,8 @@ namespace Library_Management_System
                     DialogResult result = MessageBox.Show("Are you sure you want to delete this entry?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-
-                        string id = row.Cells["borrowingId"].Value.ToString();
-                        string isbn= row.Cells["isbn"].Value.ToString();
+                        string id = row.Cells["Borrowing ID"].Value.ToString();
+                        string isbn= row.Cells["ISBN"].Value.ToString();
 
                         SqlConnection connection = new SqlConnection(connectionString);
                         try

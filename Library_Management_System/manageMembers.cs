@@ -176,7 +176,7 @@ namespace Library_Management_System
                     if (result == DialogResult.Yes)
                     {
 
-                        string id = row.Cells["userId"].Value.ToString();
+                        string id = row.Cells["User ID"].Value.ToString();
 
                         SqlConnection connection = new SqlConnection(connectionString);
                         try
@@ -210,11 +210,11 @@ namespace Library_Management_System
 
                 else if (e.ColumnIndex == librariansDataGrid.Columns["Update"].Index)
                 {
-                    string userId = row.Cells["userId"].Value.ToString();
-                    string name = row.Cells["name"].Value.ToString();
-                    string email = row.Cells["email"].Value.ToString();
-                    string password = row.Cells["password"].Value.ToString();
-                    string userType = row.Cells["userType"].Value.ToString();
+                    string userId = row.Cells["User ID"].Value.ToString();
+                    string name = row.Cells["Name"].Value.ToString();
+                    string email = row.Cells["User Name"].Value.ToString();
+                    string password = row.Cells["Password"].Value.ToString();
+                    string userType = row.Cells["User Type"].Value.ToString();
 
                     updateLibrarians obj1 = new updateLibrarians(userId, name, email, password, userType);
                     obj1.FormClosed += UpdateFormClosed;

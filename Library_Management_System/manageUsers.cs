@@ -15,7 +15,7 @@ namespace Library_Management_System
 {
     public partial class manageUsers : Form
     {
-        
+
         public manageUsers()
         {
             InitializeComponent();
@@ -24,15 +24,19 @@ namespace Library_Management_System
         string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\LibraryManagementSystem.mdf;Integrated Security=True;Connect Timeout=30";
         private void manageLibrarians_Load(object sender, EventArgs e)
         {
-            
 
+            LoadData();
+
+        }
+        private void LoadData()
+        {
             SqlConnection connection = new SqlConnection(connectionString);
 
             try
             {
                 connection.Open();
 
-                SqlCommand checkCommand =new SqlCommand("SELECT COUNT(*) FROM users",connection);
+                SqlCommand checkCommand = new SqlCommand("SELECT COUNT(*) FROM users", connection);
 
                 if (Convert.ToInt32(checkCommand.ExecuteScalar()) > 0)
                 {
@@ -49,7 +53,7 @@ namespace Library_Management_System
                     dataTable.Columns["password"].ColumnName = "Password";
                     dataTable.Columns["userType"].ColumnName = "User Type";
 
-                        
+
 
                     librariansDataGrid.DataSource = dataTable;
                     librariansDataGrid.DefaultCellStyle = new DataGridViewCellStyle();
@@ -94,7 +98,7 @@ namespace Library_Management_System
                 }
 
 
-               
+
             }
             catch (Exception ex)
             {
@@ -105,8 +109,6 @@ namespace Library_Management_System
                 connection.Close();
             }
 
-           
-
         }
 
         private void librariansDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -115,14 +117,14 @@ namespace Library_Management_System
             {
                 DataGridViewRow row = librariansDataGrid.Rows[e.RowIndex];
 
-                
+
                 if (e.ColumnIndex == librariansDataGrid.Columns["Delete"].Index)
                 {
                     DialogResult result = MessageBox.Show("Are you sure you want to delete this entry?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                       
-                        string id = row.Cells["userId"].Value.ToString();
+
+                        string id = row.Cells["User ID"].Value.ToString();
 
                         SqlConnection connection = new SqlConnection(connectionString);
                         try
@@ -134,7 +136,7 @@ namespace Library_Management_System
 
                             if (rowsAffected > 0)
                             {
-                                
+
                                 librariansDataGrid.Rows.RemoveAt(e.RowIndex);
                                 MessageBox.Show("Entry deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -153,22 +155,25 @@ namespace Library_Management_System
                         }
                     }
                 }
-                
+
                 else if (e.ColumnIndex == librariansDataGrid.Columns["Update"].Index)
                 {
-                    string userId = row.Cells["userId"].Value.ToString();
-                    string name = row.Cells["name"].Value.ToString();
-                    string email = row.Cells["email"].Value.ToString();
-                    string password = row.Cells["password"].Value.ToString();
-                    string userType = row.Cells["userType"].Value.ToString();
+                    string userId = row.Cells["User ID"].Value.ToString();
+                    string name = row.Cells["Name"].Value.ToString();
+                    string email = row.Cells["User Name"].Value.ToString();
+                    string password = row.Cells["Password"].Value.ToString();
+                    string userType = row.Cells["User Type"].Value.ToString();
 
-                    updateLibrarians obj1 = new updateLibrarians(userId,name,email,password,userType);
+                   
+
+
+                    updateLibrarians obj1 = new updateLibrarians(userId, name, email, password, userType);
                     obj1.FormClosed += UpdateFormClosed;
                     obj1.Show();
 
-                    
-                    
-                    
+
+
+
 
 
                 }
@@ -176,28 +181,11 @@ namespace Library_Management_System
         }
         private void UpdateFormClosed(object sender, FormClosedEventArgs e)
         {
-            
-            SqlConnection connection = new SqlConnection(connectionString);
+            librariansDataGrid.DataSource = null;
+            librariansDataGrid.Rows.Clear();
+            librariansDataGrid.Columns.Clear();
 
-            try
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand("SELECT * FROM users", connection);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable dataTable = new DataTable();
-
-                adapter.Fill(dataTable);
-                librariansDataGrid.DataSource = dataTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            LoadData();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -215,12 +203,19 @@ namespace Library_Management_System
             try
             {
                 connection.Open();
-                SqlCommand searchCommand = new SqlCommand("SELECT * FROM users WHERE name LIKE @searchKey OR userId LIKE @searchKey",connection);
-                searchCommand.Parameters.AddWithValue("@searchKey", "%"+searchKey+"%");
+                SqlCommand searchCommand = new SqlCommand("SELECT * FROM users WHERE name LIKE @searchKey OR userId LIKE @searchKey", connection);
+                searchCommand.Parameters.AddWithValue("@searchKey", "%" + searchKey + "%");
                 SqlDataAdapter adapter = new SqlDataAdapter(searchCommand);
                 DataTable dataTable = new DataTable();
 
                 adapter.Fill(dataTable);
+
+                dataTable.Columns["userId"].ColumnName = "User ID";
+                dataTable.Columns["name"].ColumnName = "Name";
+                dataTable.Columns["email"].ColumnName = "User Name";
+                dataTable.Columns["password"].ColumnName = "Password";
+                dataTable.Columns["userType"].ColumnName = "User Type";
+
                 librariansDataGrid.DataSource = dataTable;
             }
             catch (Exception ex)
@@ -235,31 +230,11 @@ namespace Library_Management_System
 
         private void viewAllButton_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            librariansDataGrid.DataSource = null;
+            librariansDataGrid.Rows.Clear();
+            librariansDataGrid.Columns.Clear();
 
-            try
-            {
-                connection.Open();
-                string query = "SELECT * FROM users";
-                SqlCommand cmd = new SqlCommand(query, connection);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dataTable = new DataTable();
-
-                adapter.Fill(dataTable);
-                librariansDataGrid.DataSource = dataTable;
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            
+            LoadData();
         }
     }
 
